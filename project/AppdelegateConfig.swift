@@ -20,10 +20,10 @@ class AppdelegateConfig: NSObject {
         // 按需求显示引导图
         if Storage.instance.oldVersion != appVersion {
             Storage.instance.oldVersion = appVersion
-            mainWindow!.addSubview(GuideView())
+            mainWindow.addSubview(GuideView())
         } else {
             //启动加载信息
-            
+            mainWindow.addSubview(ADView())
         }
     }
     

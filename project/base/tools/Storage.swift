@@ -12,10 +12,12 @@ import WebKit
 
 class StorageKey:NSObject {
     static let token = "token"
+    // 登录标识
     static let login = "is_login"
-    static let old_version = "old_version"
+    // 判断是否需要提示更新版本
     static let updateVersion = "updateVersion"
-    static let isfirstLaunch = "isfirstLaunch"
+    // 发布新版本会有轮播图
+    static let old_version = "old_version"
 }
 
 class Storage: NSObject {

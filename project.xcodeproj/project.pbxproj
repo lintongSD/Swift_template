@@ -52,7 +52,6 @@
 		70928906230BF63100B555B5 /* AppdelegateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppdelegateConfig.swift; sourceTree = "<group>"; };
 		70928909230BF76600B555B5 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		70EB7F36230CEA2200B2B879 /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
-		70EB7F38230CEE6300B2B879 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		70EB7F39230CF28100B2B879 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		70EB7F3B230D119700B2B879 /* ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,7 +91,6 @@
 				709288E0230BE00500B555B5 /* base */,
 				709288CE230BDFEA00B555B5 /* AppDelegate.swift */,
 				70928906230BF63100B555B5 /* AppdelegateConfig.swift */,
-				70EB7F38230CEE6300B2B879 /* PrefixHeader.pch */,
 				709288D5230BDFED00B555B5 /* Assets.xcassets */,
 				709288D7230BDFED00B555B5 /* LaunchScreen.storyboard */,
 				709288DA230BDFED00B555B5 /* Info.plist */,
