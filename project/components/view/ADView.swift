@@ -10,51 +10,19 @@ import UIKit
 
 class ADView: UIView {
     
-    var vc: UIViewController!
-    
     //跳过按钮的定时器
-    var timer = Timer()
+    var timer = Timer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil , repeats: true)
     //定时器时间
     var countDownSec = Int()
     
-    let adDeleteButton = UIButton()
-    let adImageView = UIImageView()
-    var hiddenjumpBtn = false //不显示跳过按钮-不能隐藏闪屏
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.layoutUI()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var hiddenjumpBtn = false
+    
     
     func layoutUI(){
-        self.vc = UIStoryboard.init(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreen")
-        let mainWidow = UIApplication.shared.keyWindow
-        vc.view.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
-        mainWidow?.addSubview(vc.view)
-        self.window?.bringSubviewToFront(vc.view)
+        addSubview(vc.view)
+        addSubview(adImageView)
+        addSubview(jumpButton)
         
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(self.adTarget))
-        self.adImageView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-150)
-        self.adImageView.isUserInteractionEnabled = true
-        self.adImageView.addGestureRecognizer(tapGesture)
-        self.adImageView.contentMode = .scaleAspectFill
-        self.adImageView.clipsToBounds = true
-        self.addSubview(self.adImageView)
-        
-        self.adDeleteButton.frame = CGRect(x: screenWidth - 59, y: navigationHeight-36, width: 49, height: 36)
-        self.adDeleteButton.backgroundColor = UIColor.black
-        self.adDeleteButton.alpha = 0.7
-        self.adDeleteButton.isHidden = true
-        self.adDeleteButton.layer.masksToBounds = true
-        self.adDeleteButton.layer.cornerRadius = 5
-        self.adDeleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        self.adDeleteButton.addTarget(self, action: #selector(removeSelfFromSuperview), for: .touchUpInside)
-        self.addSubview(adDeleteButton)
-        
-        ELog("开始请求apploadingAPI")
 //        EApi.instance.getWithSign(EApi.instance.getConfigApiByName("welcomeAPI"), [:], success: { (json) in
 //            guard let model = JSON(json)["content"]["content"].dictionaryObject else {
 //                self.removeSelfFromSuperview()
@@ -80,18 +48,17 @@ class ADView: UIView {
         }
         
         if imageUrlStr.isEmpty {
-            self.removeSelfFromSuperview()
+            invalidateView()
         } else {
-//            self.adImageView.sd_setImage(with:  URL.init(string:imageUrlStr)) { (image, error, type, url) in
+//            adImageView.sd_setImage(with:  URL.init(string:imageUrlStr)) { (image, error, type, url) in
 //                if error == nil {
 //                    let time = Int(ApiHelper.instance.appLoadingModel.welImgList_showing[0].showTime) ?? 3000
-//                    self.countDownSec = (time/1000) + 1
+//                    countDownSec = (time/1000) + 1
 //                    if time == 1 {
-//                        self.removeSelfFromSuperview()
+//                        removeSelfFromSuperview()
 //                        return
 //                    }
-//                    self.timer = Timer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil , repeats: true)
-//                    RunLoop.current.add(self.timer, forMode: .default)
+//                    RunLoop.current.add(timer, forMode: .default)
 //                }
 //            }
         }
@@ -101,33 +68,70 @@ class ADView: UIView {
     
     @objc func adTarget() {
 //        Router.instance.bridgeWithRouteModel(ApiHelper.instance.appLoadingModel.welImgList_showing[0].route)
-        self.removeSelfFromSuperview()
+        invalidateView()
     }
     
     
     @objc func countdown(){
-        if !self.hiddenjumpBtn {
-            self.adDeleteButton.isHidden = false
+        if !hiddenjumpBtn {
+            jumpButton.isHidden = false
             countDownSec -= 1
             if (countDownSec > 0){
                 let str = "跳过\(countDownSec)"
-                self.adDeleteButton.setTitle(str, for: UIControl.State.normal)
+                jumpButton.setTitle(str, for: UIControl.State.normal)
             }else{
-                self.removeSelfFromSuperview()
+                invalidateView()
             }
         }
     }
     
-    @objc func removeSelfFromSuperview(){
-        self.timer.invalidate()
-        self.removeFromSuperview()
-        if self.vc != nil {
-            self.vc.view.removeFromSuperview()
-        }
+    
+    override init(frame: CGRect) {
+        super.init(frame: mainWindow.bounds)
+        layoutUI()
+    }
+    
+    // 启动图占屏
+    lazy var vc: UIViewController = {
+        let vc = UIStoryboard.init(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreen")
+        vc.view.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+        return vc
+    }()
+    // 广告图
+    lazy var adImageView: UIImageView = {
+        let adImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-150))
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(adTarget))
+        adImageView.isUserInteractionEnabled = true
+        adImageView.addGestureRecognizer(tapGesture)
+        adImageView.contentMode = .scaleAspectFill
+        adImageView.clipsToBounds = true
+        return adImageView
+    }()
+    // 跳过按钮
+    lazy var jumpButton: UIButton = {
+        let jumpButton = UIButton(frame: CGRect(x: screenWidth - 59, y: navigationHeight-36, width: 49, height: 36))
+        jumpButton.alpha = 0.7
+        jumpButton.isHidden = true
+        jumpButton.layer.cornerRadius = 5
+        jumpButton.layer.masksToBounds = true
+        jumpButton.backgroundColor = UIColor.black
+        jumpButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        jumpButton.addTarget(self, action: #selector(invalidateView), for: .touchUpInside)
+        return jumpButton
+    }()
+    
+    @objc func invalidateView(){
+        timer.invalidate()
+        vc.view.removeFromSuperview()
+        removeFromSuperview()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        ELog("++++++++++++")
     }
 }
 
