@@ -2,8 +2,8 @@
 //  EApi.swift
 //  project
 //
-//  Created by EBIZM2 on 2019/8/21.
-//  Copyright © 2019 EBIZM2. All rights reserved.
+//  Created by lintong on 2019/8/21.
+//  Copyright © 2019 lintong. All rights reserved.
 //
 
 import UIKit
