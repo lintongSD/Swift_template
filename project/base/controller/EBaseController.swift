@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EBaseController: UIViewController {
+class EBaseController: UIViewController, UIGestureRecognizerDelegate {
 
     var navTitle:String = "" {
         didSet {
@@ -20,6 +20,10 @@ class EBaseController: UIViewController {
     var navView = UIView()
     var leftButton = UIButton()
     var navTitleLable = UILabel()
+    
+    // pop手势是否可用
+    var interactivePopDisabled = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +64,24 @@ class EBaseController: UIViewController {
         }
     }
     
+    
+    func addPopGesture() {
+        guard let target = self.navigationController?.interactivePopGestureRecognizer?.delegate else { return }
+        let panGesture = UIPanGestureRecognizer.init(target: target, action: Selector(("handleNavigationTransition:")))
+        self.view.addGestureRecognizer(panGesture)
+        
+        panGesture.delegate = self
+        
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // 禁止返回手势
+        if interactivePopDisabled { return false }
+        return self.navigationController?.viewControllers.count ?? 0 > 1
+    }
     
     @objc func leftButtonSelect(){
         if self.navigationController == nil {
