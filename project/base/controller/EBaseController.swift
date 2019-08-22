@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EBaseController: UIViewController, UIGestureRecognizerDelegate {
+class EBaseController: UIViewController {
 
     var navTitle:String = "" {
         didSet {
@@ -32,6 +32,8 @@ class EBaseController: UIViewController, UIGestureRecognizerDelegate {
         
         setNavView()
         hiddenLeftBtn()
+        
+        addPopGesture()
         
     }
     
@@ -65,24 +67,6 @@ class EBaseController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-    func addPopGesture() {
-        guard let target = self.navigationController?.interactivePopGestureRecognizer?.delegate else { return }
-        let panGesture = UIPanGestureRecognizer.init(target: target, action: Selector(("handleNavigationTransition:")))
-        self.view.addGestureRecognizer(panGesture)
-        
-        panGesture.delegate = self
-        
-        
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
-    }
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        // 禁止返回手势
-        if interactivePopDisabled { return false }
-        return self.navigationController?.viewControllers.count ?? 0 > 1
-    }
-    
     @objc func leftButtonSelect(){
         if self.navigationController == nil {
             self.dismiss(animated: true, completion: nil)
@@ -102,4 +86,23 @@ class EBaseController: UIViewController, UIGestureRecognizerDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+}
+
+extension EBaseController: UIGestureRecognizerDelegate {
+    
+    func addPopGesture() {
+        guard let target = self.navigationController?.interactivePopGestureRecognizer?.delegate else { return }
+        let panGesture = UIPanGestureRecognizer.init(target: target, action: Selector(("handleNavigationTransition:")))
+        self.view.addGestureRecognizer(panGesture)
+        
+        panGesture.delegate = self
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // 禁止返回手势
+        if interactivePopDisabled { return false }
+        return self.navigationController?.viewControllers.count ?? 0 > 1
+    }
 }
