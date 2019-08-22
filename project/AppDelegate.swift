@@ -26,5 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    lazy var blurView: UIVisualEffectView = {
+        let blurView = UIVisualEffectView(frame: mainWindow.bounds)
+        blurView.effect = UIBlurEffect(style: .light)
+        return blurView
+    }()
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        window?.addSubview(blurView)
+    }
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        blurView.removeFromSuperview()
+    }
 }
 
