@@ -27,6 +27,7 @@
 		70928905230BE87C00B555B5 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70928904230BE87C00B555B5 /* DeviceInfo.swift */; };
 		70928907230BF63100B555B5 /* AppdelegateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70928906230BF63100B555B5 /* AppdelegateConfig.swift */; };
 		7092890A230BF76600B555B5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70928909230BF76600B555B5 /* Storage.swift */; };
+		70CFE51D230FBDF1004F17A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CFE51C230FBDF1004F17A0 /* main.m */; };
 		70EB7F37230CEA2200B2B879 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EB7F36230CEA2200B2B879 /* GuideView.swift */; };
 		70EB7F3A230CF28100B2B879 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EB7F39230CF28100B2B879 /* AppInfo.swift */; };
 		70EB7F3C230D119700B2B879 /* ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EB7F3B230D119700B2B879 /* ADView.swift */; };
@@ -58,6 +59,8 @@
 		70928904230BE87C00B555B5 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		70928906230BF63100B555B5 /* AppdelegateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppdelegateConfig.swift; sourceTree = "<group>"; };
 		70928909230BF76600B555B5 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		70CFE51B230FBDF0004F17A0 /* project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project-Bridging-Header.h"; sourceTree = "<group>"; };
+		70CFE51C230FBDF1004F17A0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		70EB7F36230CEA2200B2B879 /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		70EB7F39230CF28100B2B879 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		70EB7F3B230D119700B2B879 /* ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADView.swift; sourceTree = "<group>"; };
@@ -128,9 +131,11 @@
 				709288E0230BE00500B555B5 /* base */,
 				709288CE230BDFEA00B555B5 /* AppDelegate.swift */,
 				70928906230BF63100B555B5 /* AppdelegateConfig.swift */,
+				70CFE51C230FBDF1004F17A0 /* main.m */,
 				709288D5230BDFED00B555B5 /* Assets.xcassets */,
 				709288D7230BDFED00B555B5 /* LaunchScreen.storyboard */,
 				709288DA230BDFED00B555B5 /* Info.plist */,
+				70CFE51B230FBDF0004F17A0 /* project-Bridging-Header.h */,
 			);
 			path = project;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 		70928908230BF74E00B555B5 /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				7026F433230D3CD500D71805 /* EApi.swift */,
 				70928904230BE87C00B555B5 /* DeviceInfo.swift */,
 				70EB7F39230CF28100B2B879 /* AppInfo.swift */,
 				70928909230BF76600B555B5 /* Storage.swift */,
@@ -224,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				70EB7F35230CEA0B00B2B879 /* view */,
-				7026F433230D3CD500D71805 /* EApi.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				TargetAttributes = {
 					709288CA230BDFEA00B555B5 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -372,6 +378,7 @@
 				709288E2230BE02B00B555B5 /* ENavigationController.swift in Sources */,
 				709288F2230BE1DA00B555B5 /* HomeController.swift in Sources */,
 				70EB7F3C230D119700B2B879 /* ADView.swift in Sources */,
+				70CFE51D230FBDF1004F17A0 /* main.m in Sources */,
 				70EB7F3A230CF28100B2B879 /* AppInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,8 +520,9 @@
 			baseConfigurationReference = 9E0403D4343E7734645368D7 /* Pods-project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7782Y97G8D;
 				INFOPLIST_FILE = project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -523,6 +531,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lintong.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "project/project-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -533,8 +543,9 @@
 			baseConfigurationReference = 2DED2D12995C2613BF467B25 /* Pods-project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7782Y97G8D;
 				INFOPLIST_FILE = project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -543,6 +554,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lintong.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "project/project-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

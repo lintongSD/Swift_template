@@ -13,11 +13,11 @@ class AppdelegateConfig: NSObject {
     private override init() {}
     
     static func config() {
-        showGuideView()
+//        showGuideView()
     }
     
     static func showGuideView() {
-        // 按需求显示引导图
+        // 按需求显示引导图(每次更新版本时显示)
         if Storage.instance.oldVersion != appVersion {
             Storage.instance.oldVersion = appVersion
             mainWindow.addSubview(GuideView())
