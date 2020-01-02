@@ -11,28 +11,21 @@ import Alamofire
 
 class EApi {
     
-    class var instance : EApi {
-        struct Static {
-            static let instance = EApi()
-        }
-        return Static.instance
-    }
-    
-    func getApiByName( _ name: String) -> String {
+    class func getApiByName( _ name: String) -> String {
         if name.starts(with: "http://") || name.starts(with: "https://") {
             return name
         }
         return ApiConfig.instance.getUrl(name)
     }
     
-    func getConfigApiByName(_ name: String) -> String {
+    class func getConfigApiByName(_ name: String) -> String {
         if name.starts(with: "http://") || name.starts(with: "https://") {
             return name
         }
         return ApiConfig.instance.configUrl + ApiConfig.instance.getUrl(name)
     }
     
-    func getBaseApiByName(_ name: String) -> String {
+    class func getBaseApiByName(_ name: String) -> String {
         if name.starts(with: "http://") || name.starts(with: "https://") {
             return name
         }

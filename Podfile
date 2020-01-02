@@ -8,5 +8,6 @@ target 'project' do
   # Pods for project
 
 pod 'Alamofire'
+pod 'SwiftyJSON'
 
 end

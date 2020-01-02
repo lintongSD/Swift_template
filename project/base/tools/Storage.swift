@@ -20,30 +20,18 @@ class StorageKey:NSObject {
     static let old_version = "old_version"
 }
 
-class Storage: NSObject {
-
-    private override init() {}
-    
-    //创建单利
-    class var instance : Storage {
-        struct Static {
-            static let instance = Storage()
-        }
-//        ENotification.instance.observer(Static.instance, #selector(clearUserInfo),  ENotificationKey.LOGOUT)
-        return Static.instance
-    }
+class Storage {
     
     //清空存储的用户信息
-    @objc func clearUserInfo() {
+    class func clearUserInfo() {
         self.token = ""
-        Storage.instance.isLogin = false
-//        JPUSHService.deleteAlias(nil, seq: 0)
+        Storage.isLogin = false
 //        UserHelper.instance.userInfoModel = UserInfoModel([:])
         removeWKWebViewCookies()
     }
     
     //=================用户Token=================
-    var token: String {
+    class var token: String {
         set {
             UserDefaults.standard.setValue(newValue, forKey: StorageKey.token)
             UserDefaults.standard.synchronize()
@@ -54,7 +42,7 @@ class Storage: NSObject {
         }
     }
     //=================是否登录=================
-    var isLogin: Bool {
+    class var isLogin: Bool {
         set {
             UserDefaults.standard.setValue(newValue ,forKey: StorageKey.login)
             UserDefaults.standard.synchronize()
@@ -65,7 +53,7 @@ class Storage: NSObject {
         }
     }
     //=================需要更新版本=================
-    var updateVersion: String {
+    class var updateVersion: String {
         get {
             let version = UserDefaults.standard.object(forKey: StorageKey.updateVersion)
             return version == nil ? "" : version as! String
@@ -76,7 +64,7 @@ class Storage: NSObject {
         }
     }
     //=================旧版本=================
-    var oldVersion: String {
+    class var oldVersion: String {
         set {
             UserDefaults.standard.setValue(newValue, forKey: StorageKey.old_version)
             UserDefaults.standard.synchronize()
@@ -87,7 +75,7 @@ class Storage: NSObject {
         }
     }
     
-    func removeWKWebViewCookies(){
+    class func removeWKWebViewCookies(){
         //iOS9.0以上使用的方法
         if #available(iOS 9.0, *) {
             let dataStore = WKWebsiteDataStore.default()

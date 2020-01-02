@@ -31,6 +31,8 @@
 		70EB7F37230CEA2200B2B879 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EB7F36230CEA2200B2B879 /* GuideView.swift */; };
 		70EB7F3A230CF28100B2B879 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EB7F39230CF28100B2B879 /* AppInfo.swift */; };
 		70EB7F3C230D119700B2B879 /* ADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EB7F3B230D119700B2B879 /* ADView.swift */; };
+		88D3BFF323BDF70700D77CC4 /* ENetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3BFF123BDF70700D77CC4 /* ENetworkTool.swift */; };
+		88D3BFF423BDF70700D77CC4 /* ENotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3BFF223BDF70700D77CC4 /* ENotification.swift */; };
 		D60323F195FBC649E52F6441 /* Pods_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F3887F116C9DFD1431CC3E /* Pods_project.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		70EB7F36230CEA2200B2B879 /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		70EB7F39230CF28100B2B879 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		70EB7F3B230D119700B2B879 /* ADView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADView.swift; sourceTree = "<group>"; };
+		88D3BFF123BDF70700D77CC4 /* ENetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENetworkTool.swift; sourceTree = "<group>"; };
+		88D3BFF223BDF70700D77CC4 /* ENotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENotification.swift; sourceTree = "<group>"; };
 		9E0403D4343E7734645368D7 /* Pods-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project.debug.xcconfig"; path = "Target Support Files/Pods-project/Pods-project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +226,8 @@
 				70928904230BE87C00B555B5 /* DeviceInfo.swift */,
 				70EB7F39230CF28100B2B879 /* AppInfo.swift */,
 				70928909230BF76600B555B5 /* Storage.swift */,
+				88D3BFF123BDF70700D77CC4 /* ENetworkTool.swift */,
+				88D3BFF223BDF70700D77CC4 /* ENotification.swift */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				709288FA230BE20100B555B5 /* RightController.swift in Sources */,
 				7092890A230BF76600B555B5 /* Storage.swift in Sources */,
 				70928907230BF63100B555B5 /* AppdelegateConfig.swift in Sources */,
+				88D3BFF323BDF70700D77CC4 /* ENetworkTool.swift in Sources */,
 				709288E4230BE04800B555B5 /* ETabBarController.swift in Sources */,
 				709288FE230BE20F00B555B5 /* MineController.swift in Sources */,
 				70EB7F37230CEA2200B2B879 /* GuideView.swift in Sources */,
@@ -379,6 +386,7 @@
 				709288F2230BE1DA00B555B5 /* HomeController.swift in Sources */,
 				70EB7F3C230D119700B2B879 /* ADView.swift in Sources */,
 				70CFE51D230FBDF1004F17A0 /* main.m in Sources */,
+				88D3BFF423BDF70700D77CC4 /* ENotification.swift in Sources */,
 				70EB7F3A230CF28100B2B879 /* AppInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
