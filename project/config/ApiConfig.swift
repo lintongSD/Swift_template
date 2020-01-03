@@ -10,26 +10,19 @@ import UIKit
 
 class ApiConfig {
     
-    class var instance : ApiConfig {
-        struct Static {
-            static let instance = ApiConfig()
-        }
-        return Static.instance
-    }
-    
 #if DEBUG
-    var environmentStr: String = "DEV"
+    static let environmentStr: String = "DEV"
 #else
-    var environmentStr: String = "PRD"
+    static let environmentStr: String = "PRD"
 #endif
     // 接口路径
-    let apiPathDict: Dictionary<String, String> = {
+    static let apiPathDict: Dictionary<String, String> = {
         let url = Bundle.main.path(forResource: "ApiPath", ofType: "plist")
         let dict = NSDictionary(contentsOfFile: url ?? " ")
         return dict as! Dictionary<String, String>
     }()
     // PRD和UAT
-    var apiEnviromentDict: Dictionary<String, String> {
+    class var apiEnviromentDict: Dictionary<String, String> {
         get {
             let url = Bundle.main.path(forResource: environmentStr, ofType: "plist")
             let dict = NSDictionary(contentsOfFile: url ?? " ")
@@ -37,7 +30,7 @@ class ApiConfig {
         }
     }
     // 获取固定url
-    final func getUrl(_ name: String) -> String {
+    class final func getUrl(_ name: String) -> String {
         guard let url = apiPathDict[name] else {
             return " "
         }
@@ -45,19 +38,19 @@ class ApiConfig {
     }
     
     // 根据当前环境环境获取baseUrl
-    final var baseUrl: String {
+    class final var baseUrl: String {
         get {
             return apiEnviromentDict["baseAPI"]!
         }
     }
     // 根据当前环境环境获取configUrl
-    final var configUrl: String {
+    class final var configUrl: String {
         get {
             return apiEnviromentDict["configAPI"]!
         }
     }
     // 根据当前环境环境获取restfulUrl
-    final var restfulUrl: String {
+    class final var restfulUrl: String {
         get {
             return apiEnviromentDict["restfulAPI"]!
         }

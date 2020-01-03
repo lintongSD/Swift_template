@@ -81,9 +81,6 @@ class GuideView: UIView ,UIScrollViewDelegate {
         pageContrll.numberOfPages = 4
         pageContrll.pageIndicatorTintColor = .subTitleColor
         pageContrll.currentPageIndicatorTintColor = .themeColor
-//        pageContrll.setValue(UIImage.init(named: "guide_current"), forKey: "currentPageImage")
-//        pageContrll.setValue(UIImage.init(named: "guide_default"), forKey: "pageImage")
-//        pageContrll.isEnabled = false //禁止点圆点
         return pageContrll
     }()
     

@@ -18,5 +18,9 @@ class HomeController: EBaseController {
         
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        NotificationTool.post(.loginSuccess)
+    }
 
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 
-let mainWindow = UIApplication.shared.keyWindow!
+let mainWindow = (UIApplication.shared.delegate as! AppDelegate).window!
 
 //MARK: 设备信息
 

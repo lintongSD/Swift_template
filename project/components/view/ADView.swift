@@ -23,19 +23,19 @@ class ADView: UIView {
         addSubview(adImageView)
         addSubview(jumpButton)
         
-//        EApi.instance.getWithSign(EApi.instance.getConfigApiByName("welcomeAPI"), [:], success: { (json) in
-//            guard let model = JSON(json)["content"]["content"].dictionaryObject else {
-//                self.removeSelfFromSuperview()
+        NetworkTool.request(url: Api.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
+//            guard let model = json["content"]["content"].dictionaryObject else {
+//                self.invalidateView()
 //                return
 //            }
-//            ApiHelper.instance.appLoadingModel = EAPPLoadingModel(model as NSDictionary)
-//            ELog("请求结束apploadingAPI")
-//            self.getAppLoadingInfoFinish()
-//            //版本检查
-//            EUpDateView.checkWelcomeVersion()
-//        }) { (error) in
-//            self.removeSelfFromSuperview()
-//        }
+//            ApiHelper.instance.appLoadingModel = APPLoadingModel(model as NSDictionary)
+            ELog("请求结束apploadingAPI")
+            self.getAppLoadingInfoFinish()
+            //版本检查
+            UpDateView.checkVersion()
+        }) { (error) in
+            self.invalidateView()
+        }
     }
     
     @objc func getAppLoadingInfoFinish(){
@@ -67,7 +67,9 @@ class ADView: UIView {
   
     
     @objc func adTarget() {
-//        Router.instance.bridgeWithRouteModel(ApiHelper.instance.appLoadingModel.welImgList_showing[0].route)
+//        if ApiHelper.instance.appLoadingModel.welImgList_showing.count > 0 {
+//            Router.instance.bridgeWithRouteModel(ApiHelper.instance.appLoadingModel.welImgList_showing[0].route)
+//        }
         invalidateView()
     }
     
