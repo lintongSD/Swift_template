@@ -42,6 +42,7 @@
 		887EB5EB23BF424E008C3C97 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 887EB5E323BF424E008C3C97 /* NSData+Base64.m */; };
 		887EB5ED23BF4742008C3C97 /* PRD.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887EB5EC23BF4742008C3C97 /* PRD.plist */; };
 		887EB5EF23BF478D008C3C97 /* ApiPath.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887EB5EE23BF478D008C3C97 /* ApiPath.plist */; };
+		887EB5F123BF508D008C3C97 /* DEV.plist in Resources */ = {isa = PBXBuildFile; fileRef = 887EB5F023BF508D008C3C97 /* DEV.plist */; };
 		88D3BFF323BDF70700D77CC4 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3BFF123BDF70700D77CC4 /* NetworkTool.swift */; };
 		88D3BFF423BDF70700D77CC4 /* NotificationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3BFF223BDF70700D77CC4 /* NotificationTool.swift */; };
 		88D4C25023BF0C1700CF2199 /* UpDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4C24F23BF0C1700CF2199 /* UpDateView.swift */; };
@@ -170,6 +171,7 @@
 		887EB5E323BF424E008C3C97 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		887EB5EC23BF4742008C3C97 /* PRD.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PRD.plist; sourceTree = "<group>"; };
 		887EB5EE23BF478D008C3C97 /* ApiPath.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiPath.plist; sourceTree = "<group>"; };
+		887EB5F023BF508D008C3C97 /* DEV.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DEV.plist; sourceTree = "<group>"; };
 		88D3BFF123BDF70700D77CC4 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		88D3BFF223BDF70700D77CC4 /* NotificationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTool.swift; sourceTree = "<group>"; };
 		88D4C24F23BF0C1700CF2199 /* UpDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDateView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				7026F431230D30F100D71805 /* ApiConfig.swift */,
 				887EB5EC23BF4742008C3C97 /* PRD.plist */,
+				887EB5F023BF508D008C3C97 /* DEV.plist */,
 				887EB5EE23BF478D008C3C97 /* ApiPath.plist */,
 			);
 			path = config;
@@ -575,6 +578,7 @@
 				709288F3230BE1DA00B555B5 /* HomeController.xib in Resources */,
 				709288FF230BE20F00B555B5 /* MineController.xib in Resources */,
 				709288F7230BE1EC00B555B5 /* LeftController.xib in Resources */,
+				887EB5F123BF508D008C3C97 /* DEV.plist in Resources */,
 				709288FB230BE20100B555B5 /* RightController.xib in Resources */,
 				887EB5E623BF424E008C3C97 /* public_key.pem in Resources */,
 				887EB5E923BF424E008C3C97 /* LICENSE in Resources */,

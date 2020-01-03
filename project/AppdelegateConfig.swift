@@ -12,6 +12,7 @@ class AppdelegateConfig {
     
     class func config() {
 //        showGuideView()
+        mainWindow.addSubview(ADView())
     }
     
     class func showGuideView() {

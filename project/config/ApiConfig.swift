@@ -10,26 +10,23 @@ import UIKit
 
 class ApiConfig {
     
-#if DEBUG
-    static let environmentStr: String = "DEV"
-#else
-    static let environmentStr: String = "PRD"
-#endif
+    static let environmentStr = "PRD"
+
     // 接口路径
     static let apiPathDict: Dictionary<String, String> = {
         let url = Bundle.main.path(forResource: "ApiPath", ofType: "plist")
         let dict = NSDictionary(contentsOfFile: url ?? " ")
         return dict as! Dictionary<String, String>
     }()
-    // PRD和UAT
-    class var apiEnviromentDict: Dictionary<String, String> {
+    // PRD和UAT(仅本文件访问)
+    fileprivate class var apiEnviromentDict: Dictionary<String, String> {
         get {
             let url = Bundle.main.path(forResource: environmentStr, ofType: "plist")
             let dict = NSDictionary(contentsOfFile: url ?? " ")
             return dict as! Dictionary<String, String>
         }
     }
-    // 获取固定url
+    // 获取url路径
     class final func getUrl(_ name: String) -> String {
         guard let url = apiPathDict[name] else {
             return " "

@@ -74,8 +74,10 @@ class NetworkTool {
      * 设置网络请求的编码方式
      */
     private class func request(url: String, method: HTTPMethod, parameters: Dictionary<String, Any>?, encoding: ParameterEncoding, headers: HTTPHeaders?, success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
-        Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).responseJSON { (responce) in
-            print(JSON(responce.result.value as Any))
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = 30
+        manager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).responseJSON { (responce) in
+            print(url + "\(JSON(responce.result.value as Any))")
             switch responce.result {
             case .success:
                 success(JSON(responce.result.value as Any))
