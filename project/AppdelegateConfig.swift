@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 
 class AppdelegateConfig {
+    static let networkListener = NetworkReachabilityManager()
     
     class func config() {
+        startListeningNetwork()
 //        showGuideView()
         mainWindow.addSubview(ADView())
     }
@@ -26,4 +29,26 @@ class AppdelegateConfig {
         }
     }
     
+    class func startListeningNetwork() -> Void {
+        networkListener?.listener = { status in
+            if networkListener?.isReachable ?? false {
+                switch status{
+                case .notReachable:
+                    ELog("网络不可用")
+                case .unknown:
+                    ELog("不知名的网络")
+                case .reachable(.ethernetOrWiFi):
+                    ELog("通过WiFi链接")
+                case .reachable(.wwan):
+                    ELog("通过移动网络链接")
+                }
+            } else {
+                ELog("网络不可用")
+            }
+        }
+        networkListener?.startListening()
+    }
+    
 }
+
+

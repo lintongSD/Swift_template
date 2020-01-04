@@ -24,6 +24,46 @@ class NetworkTool {
         requestJSONEncoding(url: url, method: method, parameters: parameters, headers: nil, success: success, failure: failure)
     }
     /**
+     * 图片上传
+     */
+    class func uploadImage(url: String, parameters: Dictionary<String, Any>?, images: [UIImage], success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
+        guard let uploadUrl = URL(string: url) else {
+            ELog("图片上传路径有误" + url)
+            return
+        }
+        let request = URLRequest(url: uploadUrl)
+        
+        Alamofire.upload(multipartFormData: { (formData) in
+            for (index, image) in images.enumerated() {
+                let data = image.jpegData(compressionQuality: 1)
+                if data?.count ?? 0 > 0 {
+                    let name = "image\(index)"
+                    formData.append(data!, withName: name, fileName: "\(name).jpg", mimeType: "image/jpg")
+                }
+            }
+        }, with: request) { (encodingResult) in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON(completionHandler: { (response) in
+                    guard let value = response.result.value else {
+                        if response.error?.localizedDescription == "已取消" {
+                            return
+                        }
+                        failure(response.error)
+                        return
+                    }
+                    if response.result.isSuccess {
+                        success(JSON(value))
+                    } else {
+                        failure(response.error)
+                    }
+                })
+            case .failure(let error):
+                failure(error)
+            }
+        }
+    }
+    /**
      * 加签
      */
     class func requestSign(url: String, method: HTTPMethod, parameters: Dictionary<String, Any>?, success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
@@ -86,6 +126,16 @@ class NetworkTool {
             }
         }
     }
-    
-    
 }
+
+struct UploadError: Error {
+    var description = ""
+    var localizedDescription: String {
+        return description
+    }
+    
+    init(_ desc: String) {
+        self.description = desc
+    }
+}
+
