@@ -36,7 +36,7 @@
 		887EB5E523BF424E008C3C97 /* HBRSAHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 887EB58D23BF424E008C3C97 /* HBRSAHandler.m */; };
 		887EB5E623BF424E008C3C97 /* public_key.pem in Resources */ = {isa = PBXBuildFile; fileRef = 887EB58E23BF424E008C3C97 /* public_key.pem */; };
 		887EB5E723BF424E008C3C97 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 887EB59123BF424E008C3C97 /* NSString+Base64.m */; };
-		887EB5E823BF424E008C3C97 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 887EB59323BF424E008C3C97 /* libcrypto.a */; };
+		887EB5E823BF424E008C3C97 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 887EB59323BF424E008C3C97 /* libcrypto.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		887EB5E923BF424E008C3C97 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 887EB59423BF424E008C3C97 /* LICENSE */; };
 		887EB5EA23BF424E008C3C97 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 887EB59523BF424E008C3C97 /* libssl.a */; };
 		887EB5EB23BF424E008C3C97 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 887EB5E323BF424E008C3C97 /* NSData+Base64.m */; };
@@ -816,7 +816,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/project/base/tools/md5/HBRSAHandler/openssl/include",
+					"$(PROJECT_DIR)/project/components/tools/md5/HBRSAHandler/openssl/include",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lintong.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -844,7 +844,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/project/base/tools/md5/HBRSAHandler/openssl/include",
+					"$(PROJECT_DIR)/project/components/tools/md5/HBRSAHandler/openssl/include",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lintong.project;
 				PRODUCT_NAME = "$(TARGET_NAME)";

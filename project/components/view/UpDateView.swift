@@ -121,30 +121,25 @@ class UpDateView: UIView {
         self.removeFromSuperview()
     }
     @objc func go2upDateClick() {
-#if DEBUG
-        if model.update.aurl.count > 4 {
-            if UIApplication.shared.canOpenURL(URL(string:model.update.aurl)!) {
-                UIApplication.shared.openURL(URL(string: model.update.aurl)!)
-                if !isforceFlag {
-                    self.removeFromSuperview()
-                }
-            }
-        } else {
-            ToastTool.toast("暂无下载链接")
-        }
-#else
-        if model.update.prdUrl.count > 4 {
+        if ApiConfig.environmentStr == "PRD" {
             if UIApplication.shared.canOpenURL(URL(string:model.update.prdUrl)!) {
                 UIApplication.shared.openURL(URL(string: model.update.prdUrl)!)
                 if !isforceFlag {
                     self.removeFromSuperview()
                 }
+            } else {
+                ToastTool.toast("暂无下载链接")
             }
         } else {
-            ToastTool.toast("暂无下载链接")
+            if UIApplication.shared.canOpenURL(URL(string:model.update.aurl)!) {
+                UIApplication.shared.openURL(URL(string: model.update.aurl)!)
+                if !isforceFlag {
+                    self.removeFromSuperview()
+                }
+            } else {
+                ToastTool.toast("暂无下载链接")
+            }
         }
-#endif
-        
     }
     func createBtn(_ title: String, _ frame: CGRect) -> UIButton {
         let button = UIButton.init(frame: frame)
