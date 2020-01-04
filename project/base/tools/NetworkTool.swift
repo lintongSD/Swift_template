@@ -117,7 +117,7 @@ class NetworkTool {
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 30
         manager.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).responseJSON { (responce) in
-            print(url + "\(JSON(responce.result.value as Any))")
+            ELog("\n" + url + " \(JSON(responce.result.value as Any))")
             switch responce.result {
             case .success:
                 success(JSON(responce.result.value as Any))

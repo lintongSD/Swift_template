@@ -10,7 +10,7 @@ import UIKit
 
 class ApiConfig {
     
-    static let environmentStr = "PRD"
+    static let environmentStr = "DEV"
 
     // 接口路径
     static let apiPathDict: Dictionary<String, String> = {
