@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class UpDateView: UIView {
     
-    var model = APPLoadingModel() {
+    var model = AppLoadingModel() {
         didSet{
             versionLabel.text = model.update.vname
             contentTextView.text = model.update.content
@@ -179,7 +179,7 @@ class UpDateView: UIView {
     }
     
     //是否强制更新的view
-    class func showUpdateView(_ model : APPLoadingModel,_ isForce:Bool) {
+    class func showUpdateView(_ model : AppLoadingModel,_ isForce:Bool) {
         let tipView = UpDateView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         tipView.model = model
         tipView.isforceFlag = isForce

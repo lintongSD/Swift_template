@@ -47,7 +47,7 @@
 		88D3BFF423BDF70700D77CC4 /* NotificationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3BFF223BDF70700D77CC4 /* NotificationTool.swift */; };
 		88D4C25023BF0C1700CF2199 /* UpDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4C24F23BF0C1700CF2199 /* UpDateView.swift */; };
 		88D4C25423BF0C7900CF2199 /* EBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4C25323BF0C7900CF2199 /* EBaseModel.swift */; };
-		88D4C25623BF0D2400CF2199 /* APPLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4C25523BF0D2400CF2199 /* APPLoadingModel.swift */; };
+		88D4C25623BF0D2400CF2199 /* AppLoadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D4C25523BF0D2400CF2199 /* AppLoadingModel.swift */; };
 		88EB8C4223BF1CAD006511AC /* ToastTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EB8C4123BF1CAD006511AC /* ToastTool.swift */; };
 		D60323F195FBC649E52F6441 /* Pods_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F3887F116C9DFD1431CC3E /* Pods_project.framework */; };
 /* End PBXBuildFile section */
@@ -176,7 +176,7 @@
 		88D3BFF223BDF70700D77CC4 /* NotificationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTool.swift; sourceTree = "<group>"; };
 		88D4C24F23BF0C1700CF2199 /* UpDateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDateView.swift; sourceTree = "<group>"; };
 		88D4C25323BF0C7900CF2199 /* EBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBaseModel.swift; sourceTree = "<group>"; };
-		88D4C25523BF0D2400CF2199 /* APPLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPLoadingModel.swift; sourceTree = "<group>"; };
+		88D4C25523BF0D2400CF2199 /* AppLoadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingModel.swift; sourceTree = "<group>"; };
 		88EB8C4123BF1CAD006511AC /* ToastTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTool.swift; sourceTree = "<group>"; };
 		9E0403D4343E7734645368D7 /* Pods-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project.debug.xcconfig"; path = "Target Support Files/Pods-project/Pods-project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,8 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				88D4C25223BF0C4500CF2199 /* model */,
-				70928908230BF74E00B555B5 /* tools */,
-				70928901230BE43600B555B5 /* extension */,
 				70928900230BE41B00B555B5 /* controller */,
 			);
 			path = base;
@@ -353,6 +351,8 @@
 		70EB7F34230CEA0200B2B879 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				70928908230BF74E00B555B5 /* tools */,
+				70928901230BE43600B555B5 /* extension */,
 				88D4C25123BF0C2900CF2199 /* model */,
 				70EB7F35230CEA0B00B2B879 /* view */,
 			);
@@ -498,7 +498,7 @@
 		88D4C25123BF0C2900CF2199 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				88D4C25523BF0D2400CF2199 /* APPLoadingModel.swift */,
+				88D4C25523BF0D2400CF2199 /* AppLoadingModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -639,7 +639,7 @@
 				709288F6230BE1EC00B555B5 /* LeftController.swift in Sources */,
 				709288E6230BE05F00B555B5 /* EBaseController.swift in Sources */,
 				709288FA230BE20100B555B5 /* RightController.swift in Sources */,
-				88D4C25623BF0D2400CF2199 /* APPLoadingModel.swift in Sources */,
+				88D4C25623BF0D2400CF2199 /* AppLoadingModel.swift in Sources */,
 				7092890A230BF76600B555B5 /* Storage.swift in Sources */,
 				70928907230BF63100B555B5 /* AppdelegateConfig.swift in Sources */,
 				88D3BFF323BDF70700D77CC4 /* NetworkTool.swift in Sources */,

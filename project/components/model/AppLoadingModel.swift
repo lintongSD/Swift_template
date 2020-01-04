@@ -8,7 +8,7 @@
 
 import UIKit
 
-class APPLoadingModel: EBaseModel {
+class AppLoadingModel: EBaseModel {
     var flash = AppLoadingDetailModel([:])
     var update = AppLoadingDetailModel([:])
     
