@@ -153,7 +153,7 @@ class UpDateView: UIView {
     }
     
     //MARK: - 版本检查
-    class func checkVersion() {
+    class func checkVersion(_ model: AppLoadingModel) {
         
 //        //  当前版本号
 //        let currentVersion = Int(Md5.getCurrentVersion())!

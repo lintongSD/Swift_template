@@ -11,70 +11,64 @@ import UIKit
 class ADView: UIView {
     
     //跳过按钮的定时器
-    var timer = Timer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil , repeats: true)
+    lazy var timer: Timer = {
+        return Timer(timeInterval: 1, target: self, selector: #selector(countdown), userInfo: nil , repeats: true)
+    }()
     //定时器时间
-    var countDownSec = Int()
+    var countDownSec = 4
     
     var hiddenjumpBtn = false
     
+    var model = AppLoadingModel([:])
     
-    func layoutUI(){
+    func layoutUI() {
         addSubview(vc.view)
         addSubview(adImageView)
         addSubview(jumpButton)
         
         NetworkTool.request(url: Api.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
-            guard let model = json["content"]["content"].dictionaryObject else {
+            guard let model = json["content"].dictionaryObject else {
                 self.invalidateView()
                 return
             }
-//            ApiHelper.instance.appLoadingModel = APPLoadingModel(model as NSDictionary)
-            ELog("请求结束apploadingAPI")
+            let appLoadingModel = AppLoadingModel(model)
+            self.model = appLoadingModel
             self.getAppLoadingInfoFinish()
             //版本检查
-            UpDateView.checkVersion()
+            UpDateView.checkVersion(appLoadingModel)
         }) { (error) in
             self.invalidateView()
         }
     }
     
-    @objc func getAppLoadingInfoFinish(){
+    @objc func getAppLoadingInfoFinish() {
         var imageUrlStr = ""
-        
         if isiPhoneX {
-//            imageUrlStr = ApiHelper.instance.appLoadingModel.welImgList_showing[0].imgHrefExt1
+            imageUrlStr = model.flash.ximg
         } else {
-//            imageUrlStr = ApiHelper.instance.appLoadingModel.welImgList_showing[0].imgHref
+            imageUrlStr = model.flash.img
         }
         
         if imageUrlStr.isEmpty {
             invalidateView()
         } else {
-//            adImageView.sd_setImage(with:  URL.init(string:imageUrlStr)) { (image, error, type, url) in
-//                if error == nil {
-//                    let time = Int(ApiHelper.instance.appLoadingModel.welImgList_showing[0].showTime) ?? 3000
-//                    countDownSec = (time/1000) + 1
-//                    if time == 1 {
-//                        removeSelfFromSuperview()
-//                        return
-//                    }
-//                    RunLoop.current.add(timer, forMode: .default)
-//                }
-//            }
+            adImageView.sd_setImage(with:  URL.init(string:imageUrlStr)) { (image, error, type, url) in
+                if error == nil {
+                    RunLoop.current.add(self.timer, forMode: .default)
+                }
+            }
         }
     }
     
   
     
     @objc func adTarget() {
-//        if ApiHelper.instance.appLoadingModel.welImgList_showing.count > 0 {
-//            Router.instance.bridgeWithRouteModel(ApiHelper.instance.appLoadingModel.welImgList_showing[0].route)
-//        }
+//        Router.instance.bridgeWith(model.flash.route)
         invalidateView()
     }
     
     
-    @objc func countdown(){
+    @objc func countdown() {
         if !hiddenjumpBtn {
             jumpButton.isHidden = false
             countDownSec -= 1
@@ -122,7 +116,7 @@ class ADView: UIView {
         return jumpButton
     }()
     
-    @objc func invalidateView(){
+    @objc func invalidateView() {
         timer.invalidate()
         vc.view.removeFromSuperview()
         removeFromSuperview()
@@ -133,7 +127,7 @@ class ADView: UIView {
     }
     
     deinit {
-        ELog("++++++++++++")
+        ELog("广告页被销毁")
     }
 }
 

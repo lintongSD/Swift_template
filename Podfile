@@ -10,5 +10,6 @@ target 'project' do
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'MBProgressHUD'
+pod 'SDCycleScrollView'
 
 end
