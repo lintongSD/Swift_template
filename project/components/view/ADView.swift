@@ -24,10 +24,10 @@ class ADView: UIView {
         addSubview(jumpButton)
         
         NetworkTool.request(url: Api.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
-//            guard let model = json["content"]["content"].dictionaryObject else {
-//                self.invalidateView()
-//                return
-//            }
+            guard let model = json["content"]["content"].dictionaryObject else {
+                self.invalidateView()
+                return
+            }
 //            ApiHelper.instance.appLoadingModel = APPLoadingModel(model as NSDictionary)
             ELog("请求结束apploadingAPI")
             self.getAppLoadingInfoFinish()

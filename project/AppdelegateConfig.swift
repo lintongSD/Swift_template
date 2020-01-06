@@ -14,8 +14,7 @@ class AppdelegateConfig {
     
     class func config() {
         startListeningNetwork()
-//        showGuideView()
-        mainWindow.addSubview(ADView())
+        showGuideView()
     }
     
     class func showGuideView() {
