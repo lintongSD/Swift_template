@@ -363,7 +363,7 @@
 		70EB7F34230CEA0200B2B879 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				88E5244523C32B1800BC5597 /* controller */,
+				88F2754123C47CC0007EA8E8 /* scan */,
 				70928908230BF74E00B555B5 /* tools */,
 				70928901230BE43600B555B5 /* extension */,
 				88D4C25123BF0C2900CF2199 /* model */,
@@ -375,7 +375,6 @@
 		70EB7F35230CEA0B00B2B879 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				88E5244823C32B6200BC5597 /* ScanningView.swift */,
 				70EB7F36230CEA2200B2B879 /* GuideView.swift */,
 				70EB7F3B230D119700B2B879 /* ADView.swift */,
 				88D4C24F23BF0C1700CF2199 /* UpDateView.swift */,
@@ -526,12 +525,13 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		88E5244523C32B1800BC5597 /* controller */ = {
+		88F2754123C47CC0007EA8E8 /* scan */ = {
 			isa = PBXGroup;
 			children = (
 				88E5244623C32B5700BC5597 /* ScannningVC.swift */,
+				88E5244823C32B6200BC5597 /* ScanningView.swift */,
 			);
-			path = controller;
+			path = scan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

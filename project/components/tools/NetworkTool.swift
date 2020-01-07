@@ -26,17 +26,20 @@ class NetworkTool {
     /**
      * 图片上传
      */
-    class func uploadImage(url: String, parameters: Dictionary<String, Any>?, images: [UIImage], success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
+    func uploadImage(url: String, parameters: Dictionary<String, Any>?, images: [UIImage], success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
         guard let uploadUrl = URL(string: url) else {
             ELog("图片上传路径有误" + url)
             return
         }
-        let request = URLRequest(url: uploadUrl)
+        let manager = Alamofire.SessionManager.default
+        let headers = ["token":"xxxxxx"]
+        let request = try! URLRequest(url: uploadUrl, method: .post, headers: headers)
         
-        Alamofire.upload(multipartFormData: { (formData) in
+        manager.upload(multipartFormData: { (formData) in
             for (index, image) in images.enumerated() {
                 let data = image.jpegData(compressionQuality: 1)
                 if data?.count ?? 0 > 0 {
+                    // 前端不对图片名进行处理
                     let name = "image\(index)"
                     formData.append(data!, withName: name, fileName: "\(name).jpg", mimeType: "image/jpg")
                 }
