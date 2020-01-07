@@ -163,7 +163,6 @@ class UpDateView: UIView {
         //  线上最高版本号
         let cversionStr = model.update.cversion == "" ? "0" : model.update.cversion
         let highVersion = Int(cversionStr)!
-        self.showUpdateView(model, true)
         if currentVersion < minVersion { // 当前版本小于最低版本 弹强制更新
             self.showUpdateView(model, true)
         } else if currentVersion < highVersion {  //当前版本小于线上最高版本 提示更新
