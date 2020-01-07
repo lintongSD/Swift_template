@@ -54,6 +54,8 @@
 		88E5244923C32B6200BC5597 /* ScanningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5244823C32B6200BC5597 /* ScanningView.swift */; };
 		88E5244B23C32C6700BC5597 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E5244A23C32C6700BC5597 /* UIView_Extension.swift */; };
 		88EB8C4223BF1CAD006511AC /* ToastTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EB8C4123BF1CAD006511AC /* ToastTool.swift */; };
+		88F2754823C48665007EA8E8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2754623C48665007EA8E8 /* LoginController.swift */; };
+		88F2754923C48665007EA8E8 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F2754723C48665007EA8E8 /* LoginController.xib */; };
 		D60323F195FBC649E52F6441 /* Pods_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F3887F116C9DFD1431CC3E /* Pods_project.framework */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +190,8 @@
 		88E5244823C32B6200BC5597 /* ScanningView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningView.swift; sourceTree = "<group>"; };
 		88E5244A23C32C6700BC5597 /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		88EB8C4123BF1CAD006511AC /* ToastTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTool.swift; sourceTree = "<group>"; };
+		88F2754623C48665007EA8E8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		88F2754723C48665007EA8E8 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		9E0403D4343E7734645368D7 /* Pods-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project.debug.xcconfig"; path = "Target Support Files/Pods-project/Pods-project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,6 +285,7 @@
 		709288E7230BE10F00B555B5 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				88F2754323C4859B007EA8E8 /* login */,
 				709288E8230BE11700B555B5 /* home */,
 				709288EA230BE12000B555B5 /* left */,
 				709288EB230BE12700B555B5 /* right */,
@@ -534,6 +539,15 @@
 			path = scan;
 			sourceTree = "<group>";
 		};
+		88F2754323C4859B007EA8E8 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				88F2754623C48665007EA8E8 /* LoginController.swift */,
+				88F2754723C48665007EA8E8 /* LoginController.xib */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -607,6 +621,7 @@
 				887EB5E923BF424E008C3C97 /* LICENSE in Resources */,
 				887EB5E423BF424E008C3C97 /* private_key.pem in Resources */,
 				709288D6230BDFED00B555B5 /* Assets.xcassets in Resources */,
+				88F2754923C48665007EA8E8 /* LoginController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,6 +685,7 @@
 				88D3BFF323BDF70700D77CC4 /* NetworkTool.swift in Sources */,
 				709288E4230BE04800B555B5 /* ETabBarController.swift in Sources */,
 				709288FE230BE20F00B555B5 /* MineController.swift in Sources */,
+				88F2754823C48665007EA8E8 /* LoginController.swift in Sources */,
 				88E5244723C32B5700BC5597 /* ScannningVC.swift in Sources */,
 				70EB7F37230CEA2200B2B879 /* GuideView.swift in Sources */,
 				70928905230BE87C00B555B5 /* DeviceInfo.swift in Sources */,

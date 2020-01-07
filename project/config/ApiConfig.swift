@@ -3,7 +3,7 @@
 //  appwork
 //
 //  Created by lintong on 2019/5/6.
-//  Copyright © 2019 EBIZHZ1. All rights reserved.
+//  Copyright © 2019 lintong. All rights reserved.
 //
 
 import UIKit

@@ -1,9 +1,9 @@
 //
-//  EStorage.swift
+//  Storage.swift
 //  project
 //
-//  Created by EBIZHZ1 on 2018/10/18.
-//  Copyright © 2018年 EBIZHZ1. All rights reserved.
+//  Created by lintong on 2018/10/18.
+//  Copyright © 2018年 lintong. All rights reserved.
 //
 //用户信息存储类
 

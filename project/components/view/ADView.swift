@@ -2,8 +2,8 @@
 //  ADView.swift
 //  project
 //
-//  Created by EBIZHZ1 on 2018/10/22.
-//  Copyright © 2018年 EBIZHZ1. All rights reserved.
+//  Created by lintong on 2018/10/22.
+//  Copyright © 2018年 lintong. All rights reserved.
 //
 
 import UIKit
@@ -58,7 +58,7 @@ class ADView: UIView {
   
     
     @objc func adTarget() {
-        Router.instance.bridgeWith(model.flash.route)
+        Router.bridgeWith(model.flash.route)
         invalidateView()
     }
     

@@ -1,9 +1,9 @@
 //
-//  EDevice.swift
+//  Device.swift
 //  project
 //
-//  Created by EBIZHZ1 on 2018/10/18.
-//  Copyright © 2018年 EBIZHZ1. All rights reserved.
+//  Created by lintong on 2018/10/18.
+//  Copyright © 2018年 lintong. All rights reserved.
 //
 
 import UIKit
@@ -28,7 +28,7 @@ let navigationHeight: CGFloat = isiPhoneX ? 88 : 64
 //tabbar高度
 let tabbarHeight: CGFloat = isiPhoneX ? 83 : 49
 
-
+let rootVC = mainWindow.rootViewController
 
 
 

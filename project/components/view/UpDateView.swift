@@ -1,9 +1,9 @@
 //
-//  EUpDateView.swift
+//  UpDateView.swift
 //  appwork
 //
-//  Created by EBIZM2 on 2019/4/28.
-//  Copyright © 2019 EBIZHZ1. All rights reserved.
+//  Created by lintong on 2019/4/28.
+//  Copyright © 2019 lintong. All rights reserved.
 //
 
 import UIKit
@@ -155,22 +155,21 @@ class UpDateView: UIView {
     //MARK: - 版本检查
     class func checkVersion(_ model: AppLoadingModel) {
         
-//        //  当前版本号
-//        let currentVersion = Int(Md5.getCurrentVersion())!
-//        //  最低版本号
-//        let mvStr = ApiHelper.instance.appLoadingModel.update.mversion == "" ? "0" : ApiHelper.instance.appLoadingModel.update.mversion
-//        let minVersion = Int(mvStr)!
-//        //  线上最高版本号
-//        let cversionStr = ApiHelper.instance.appLoadingModel.update.cversion == "" ? "0" :
-//            ApiHelper.instance.appLoadingModel.update.cversion
-//        let highVersion = Int(cversionStr)!
-//        if currentVersion < minVersion { // 当前版本小于最低版本 弹强制更新
-//            self.showUpdateView(ApiHelper.instance.appLoadingModel, true)
-//        } else if currentVersion < highVersion {  //当前版本小于线上最高版本 提示更新
-//            self.showUpdateView(ApiHelper.instance.appLoadingModel, false)
-//        }
-//
-//        ELog("checkVersion版本检查：最低要求版本号\(mvStr),当前最新版本号\(cversionStr)")
+        //  当前版本号
+        let currentVersion = Int(Md5.getCurrentVersion())!
+        //  最低版本号
+        let mvStr = model.update.mversion == "" ? "0" : model.update.mversion
+        let minVersion = Int(mvStr)!
+        //  线上最高版本号
+        let cversionStr = model.update.cversion == "" ? "0" : model.update.cversion
+        let highVersion = Int(cversionStr)!
+        self.showUpdateView(model, true)
+        if currentVersion < minVersion { // 当前版本小于最低版本 弹强制更新
+            self.showUpdateView(model, true)
+        } else if currentVersion < highVersion {  //当前版本小于线上最高版本 提示更新
+            self.showUpdateView(model, false)
+        }
+        ELog("checkVersion版本检查：最低要求版本号\(mvStr),当前最新版本号\(cversionStr)")
     }
     
     //是否强制更新的view

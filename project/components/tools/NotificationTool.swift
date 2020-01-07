@@ -1,9 +1,9 @@
 //
-//  Enoti.swift
+//  NotificationTool.swift
 //  project
 //
-//  Created by EBIZHZ0 on 2018/10/24.
-//  Copyright © 2018年 EBIZHZ1. All rights reserved.
+//  Created by lintong on 2018/10/24.
+//  Copyright © 2018年 lintong. All rights reserved.
 //
 
 import Foundation

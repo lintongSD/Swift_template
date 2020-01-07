@@ -26,7 +26,7 @@ class NetworkTool {
     /**
      * 图片上传
      */
-    func uploadImage(url: String, parameters: Dictionary<String, Any>?, images: [UIImage], success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
+    class func uploadImage(url: String, parameters: Dictionary<String, Any>?, images: [UIImage], success: @escaping (JSON) -> Void, failure: @escaping (Error?) -> Void) {
         guard let uploadUrl = URL(string: url) else {
             ELog("图片上传路径有误" + url)
             return
