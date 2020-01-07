@@ -42,12 +42,7 @@ class ADView: UIView {
     }
     
     @objc func getAppLoadingInfoFinish() {
-        var imageUrlStr = ""
-        if isiPhoneX {
-            imageUrlStr = model.flash.ximg
-        } else {
-            imageUrlStr = model.flash.img
-        }
+        let imageUrlStr = isiPhoneX ? model.flash.ximg : model.flash.img
         
         if imageUrlStr.isEmpty {
             invalidateView()
@@ -63,7 +58,7 @@ class ADView: UIView {
   
     
     @objc func adTarget() {
-//        Router.instance.bridgeWith(model.flash.route)
+        Router.instance.bridgeWith(model.flash.route)
         invalidateView()
     }
     
