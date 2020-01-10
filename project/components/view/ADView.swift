@@ -58,7 +58,7 @@ class ADView: UIView {
   
     
     @objc func adTarget() {
-        Router.bridgeWith(model.flash.route)
+        RouteTool.bridgeWith(model.flash.route)
         invalidateView()
     }
     

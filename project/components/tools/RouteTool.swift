@@ -9,12 +9,12 @@
 import UIKit
 import SwiftyJSON
 
-class Router: NSObject {
+class RouteTool: NSObject {
     
     internal override init() {}
     
     //MARK : 通用route 跳转 支持string类型或者model的跳转
-    class func bridgeWith<T>(_ anyRoute:T) {
+    class func bridgeWith<T>(_ anyRoute: T) {
         print("route跳转+++++++++++++")
         print(anyRoute)
         if let route = anyRoute as? String {
@@ -28,11 +28,11 @@ class Router: NSObject {
         
     }
     
-    private class func bridgeWithRouteModel(_ routeModel:RouteModel) {
+    private class func bridgeWithRouteModel(_ routeModel: RouteModel) {
         
         switch routeModel.flag {
-//        case "h5":
-//            self.bridgerH5(routeModel.extra, .h5)
+        case "h5":
+            self.bridgeH5(routeModel)
         case "login":
             self.presentLoginVC()
 //        case "user_update":
@@ -68,17 +68,23 @@ class Router: NSObject {
         }
     }
     
+    private class func bridgeH5(_ routeModel: RouteModel) {
+        let webVC = WebController()
+        webVC.model = routeModel.extra
+        currentNav.pushViewController(webVC, animated: true)
+    }
+    
+}
+
+
+extension RouteTool {
+    
     class func presentLoginVC() {
         let u = LoginController(nibName: "LoginController", bundle: nil)
         let v = ENavigationController.init(rootViewController: u)
         tabbar.present(v, animated: true, completion: nil)
     }
     
-}
-
-
-extension Router {
-        
     class var tabbar: ETabBarController {
         guard let tabbar = mainWindow.rootViewController else {
             ELog("找不到根控制器")
@@ -98,7 +104,4 @@ extension Router {
         }
         return nav as! ENavigationController
     }
-    
-    
-    
 }

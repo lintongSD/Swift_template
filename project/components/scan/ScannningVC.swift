@@ -82,7 +82,7 @@ class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
         }
         
         if str.starts(with: "http") {
-            Router.bridgeWith("{\"flag\":\"h5\",\"extra\":{\"url\":\"\(str)\"}}")
+            RouteTool.bridgeWith("{\"flag\":\"h5\",\"extra\":{\"url\":\"\(str)\"}}")
         } else {
             ToastTool.toast("扫描结果为：\(str)")
         }

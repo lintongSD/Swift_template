@@ -10,16 +10,17 @@ import WebKit
 
 class EWebController: EBaseController, WKNavigationDelegate {
     
-    var url = ""
+    var model = RouteExtraModel([:])
+    
     var webView = EBaseWebView()
-    var isFirstLogin = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.frame = CGRect(x: 0, y: navigationHeight, width: screenWidth, height: screenHeight-navigationHeight)
         webView.navigationDelegate = self
         view.addSubview(webView)
         
-        let (webURL, result) = checkUrl(url: self.url)
+        let (webURL, result) = checkUrl(url: model.url)
         if result {
             webView.load(URLRequest(url: webURL!))
         }
@@ -33,6 +34,7 @@ class EWebController: EBaseController, WKNavigationDelegate {
         self.navTitle = self.navTitle != "" ? self.navTitle : webView.title ?? ""
         
     }
+    
 }
 
 func checkUrl(url: String) -> (URL?, Bool) {
