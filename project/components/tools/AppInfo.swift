@@ -18,3 +18,9 @@ let bundleId = Bundle.main.object(forInfoDictionaryKey: "CFBundleIdentifier") as
 
 // app版本
 let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+
+
+let jpushId = "aaaa"
+
+// appName要保证和bugly一致
+let buglyId = ""

@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        AppdelegateConfig.config()
         self.window =  UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = .white
         window?.rootViewController = ETabBarController()
         window?.makeKeyAndVisible()
         
-        AppdelegateConfig.config()
+        showGuideView()
         
         return true
     }

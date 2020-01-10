@@ -56,6 +56,8 @@
 		88EB8C4223BF1CAD006511AC /* ToastTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EB8C4123BF1CAD006511AC /* ToastTool.swift */; };
 		88F2754823C48665007EA8E8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2754623C48665007EA8E8 /* LoginController.swift */; };
 		88F2754923C48665007EA8E8 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F2754723C48665007EA8E8 /* LoginController.xib */; };
+		88FFA9A723C715DA00A0EDD4 /* EWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFA9A623C715DA00A0EDD4 /* EWebController.swift */; };
+		88FFA9AA23C7169900A0EDD4 /* EBaseWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFA9A923C7169900A0EDD4 /* EBaseWebView.swift */; };
 		D60323F195FBC649E52F6441 /* Pods_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F3887F116C9DFD1431CC3E /* Pods_project.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +194,8 @@
 		88EB8C4123BF1CAD006511AC /* ToastTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTool.swift; sourceTree = "<group>"; };
 		88F2754623C48665007EA8E8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		88F2754723C48665007EA8E8 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
+		88FFA9A623C715DA00A0EDD4 /* EWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EWebController.swift; sourceTree = "<group>"; };
+		88FFA9A923C7169900A0EDD4 /* EBaseWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBaseWebView.swift; sourceTree = "<group>"; };
 		9E0403D4343E7734645368D7 /* Pods-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project.debug.xcconfig"; path = "Target Support Files/Pods-project/Pods-project.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +280,7 @@
 		709288E0230BE00500B555B5 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				88FFA9A823C7167D00A0EDD4 /* view */,
 				88D4C25223BF0C4500CF2199 /* model */,
 				70928900230BE41B00B555B5 /* controller */,
 			);
@@ -336,6 +341,7 @@
 				709288E3230BE04800B555B5 /* ETabBarController.swift */,
 				709288E1230BE02B00B555B5 /* ENavigationController.swift */,
 				709288E5230BE05F00B555B5 /* EBaseController.swift */,
+				88FFA9A623C715DA00A0EDD4 /* EWebController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -548,6 +554,14 @@
 			path = login;
 			sourceTree = "<group>";
 		};
+		88FFA9A823C7167D00A0EDD4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				88FFA9A923C7169900A0EDD4 /* EBaseWebView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -676,6 +690,7 @@
 			files = (
 				709288F6230BE1EC00B555B5 /* LeftController.swift in Sources */,
 				709288E6230BE05F00B555B5 /* EBaseController.swift in Sources */,
+				88FFA9AA23C7169900A0EDD4 /* EBaseWebView.swift in Sources */,
 				709288FA230BE20100B555B5 /* RightController.swift in Sources */,
 				88E5244423C3269F00BC5597 /* RouteModel.swift in Sources */,
 				88D4C25623BF0D2400CF2199 /* AppLoadingModel.swift in Sources */,
@@ -706,6 +721,7 @@
 				70EB7F3C230D119700B2B879 /* ADView.swift in Sources */,
 				70CFE51D230FBDF1004F17A0 /* main.m in Sources */,
 				88D3BFF423BDF70700D77CC4 /* NotificationTool.swift in Sources */,
+				88FFA9A723C715DA00A0EDD4 /* EWebController.swift in Sources */,
 				70EB7F3A230CF28100B2B879 /* AppInfo.swift in Sources */,
 				88D4C25023BF0C1700CF2199 /* UpDateView.swift in Sources */,
 			);
