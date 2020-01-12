@@ -21,7 +21,7 @@ class EBaseWebView: WKWebView {
             //尽量不要设置cookie
             //加domain和apath 指定当前域名的路径
             //不设置domain 默认当前域名 = "path=/;"
-            //不设置path 默认当前域名 和 截止到路径.html前的路径 = "path=/;" 和 "path=xxx/xx;"
+            //不设置path 默认当前域名 和 截止到xx.html前的路径 = "path=/;" 和 "path=xxx/xx;"
             //ajax中的cookie获取的是"path=/;"
             "document.cookie = 'token=ddadaadad; domain=dat-m.lxebao.com; path=/;'"
             ]
@@ -34,6 +34,8 @@ class EBaseWebView: WKWebView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    deinit {
+        print("aaaaaaaaaaaa")
+    }
 }
 

@@ -11,5 +11,6 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'MBProgressHUD'
 pod 'SDCycleScrollView'
+pod 'WebViewJavascriptBridge'
 
 end

@@ -5,3 +5,4 @@
 #import "MD5.h"
 #import <SDCycleScrollView.h>
 #import <SDWebImage.h>
+#import <WebViewJavascriptBridge.h>

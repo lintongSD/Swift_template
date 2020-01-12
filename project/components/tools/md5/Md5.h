@@ -30,7 +30,7 @@
 
 /**
  *创建16位MD5加密
- *@param  需要加密的字符串
+ *@param str 需要加密的字符串
  *@return MD5 16位加密字符串
  */
 +(NSString *)createMD5With16:(NSString *)str;
