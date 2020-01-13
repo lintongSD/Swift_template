@@ -10,7 +10,7 @@
 import UIKit
 import WebKit
 
-class StorageKey:NSObject {
+class StorageKey: NSObject {
     static let token = "token"
     // 登录标识
     static let login = "is_login"
