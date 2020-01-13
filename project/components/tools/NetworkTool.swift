@@ -142,3 +142,82 @@ struct UploadError: Error {
     }
 }
 
+extension NetworkTool {
+    /**
+     * 配置https证书
+     */
+    class func configSSL() {
+        let manager = SessionManager.default
+        manager.delegate.sessionDidReceiveChallenge = {session, challenge in
+            //认证服务器证书
+            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+                print("服务端证书认证！")
+                let serverTrust:SecTrust = challenge.protectionSpace.serverTrust!
+                let certificate = SecTrustGetCertificateAtIndex(serverTrust, 0)!
+                let remoteCertificateData = CFBridgingRetain(SecCertificateCopyData(certificate))!
+
+                //app端证书
+                let cerPath = Bundle.main.path(forResource: "app", ofType: "cer")!
+                let cerUrl = URL(fileURLWithPath:cerPath)
+                let localCertificateData = try! Data(contentsOf: cerUrl)
+                
+                if (remoteCertificateData.isEqual(localCertificateData) == true) {
+                    let credential = URLCredential(trust: serverTrust)
+                    challenge.sender?.use(credential, for: challenge)
+                    return (URLSession.AuthChallengeDisposition.useCredential,URLCredential(trust: challenge.protectionSpace.serverTrust!))
+                } else {
+                    return (.cancelAuthenticationChallenge, nil)
+                }
+            } else if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodClientCertificate {
+                print("客户端证书认证！")
+                let identityAndTrust:IdentityAndTrust = self.extractIdentity()
+                let urlCredential:URLCredential = URLCredential(identity: identityAndTrust.identityRef,certificates: identityAndTrust.certArray as? [AnyObject],persistence: URLCredential.Persistence.forSession);
+                return (.useCredential, urlCredential)
+            } else {
+                return (.cancelAuthenticationChallenge, nil)
+            }
+        }
+    }
+    
+    //获取客户端证书相关信息
+    private class func extractIdentity() -> IdentityAndTrust {
+        var identityAndTrust:IdentityAndTrust!
+        var securityError:OSStatus = errSecSuccess
+
+        //服务端证书
+        let path: String = Bundle.main.path(forResource: "server", ofType: "p12")!
+        let PKCS12Data = NSData(contentsOfFile:path)!
+        let key : NSString = kSecImportExportPassphrase as NSString
+        let options : NSDictionary = [key : "111111"] //客户端证书密码
+        //create variable for holding security information
+        //var privateKeyRef: SecKeyRef? = nil
+        
+        var items : CFArray?
+        
+        securityError = SecPKCS12Import(PKCS12Data, options, &items)
+        
+        if securityError == errSecSuccess {
+            let certItemsArray = items as! Array<Any>
+            let dict = certItemsArray.first as AnyObject?
+            if let certEntry = dict as? Dictionary<String, AnyObject> {
+                // grab the identity
+                let identityPointer = certEntry["identity"]
+                let secIdentityRef = identityPointer as! SecIdentity
+                // grab the trust
+                let trustPointer = certEntry["trust"]
+                let trustRef = trustPointer as! SecTrust
+                // grab the cert
+                let chainPointer = certEntry["chain"]
+                identityAndTrust = IdentityAndTrust(identityRef: secIdentityRef,
+                                                    trust: trustRef, certArray:  chainPointer!)
+            }
+        }
+        return identityAndTrust
+    }
+    //定义一个结构体，存储认证相关信息
+    struct IdentityAndTrust {
+        var identityRef:SecIdentity
+        var trust:SecTrust
+        var certArray:AnyObject
+    }
+}
