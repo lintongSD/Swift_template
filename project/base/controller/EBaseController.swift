@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class EBaseController: UIViewController {
 
@@ -104,5 +105,24 @@ extension EBaseController: UIGestureRecognizerDelegate {
         // 禁止返回手势
         if interactivePopDisabled { return false }
         return self.navigationController?.viewControllers.count ?? 0 > 1
+    }
+}
+
+
+extension EBaseController {
+    func registBridge(_ bridge: WebViewJavascriptBridge) {
+        
+        bridge.registerHandler("bridge") { (data, responBlock) in
+            if JSONSerialization.isValidJSONObject(data!) {
+                let json = JSON.init(data!)
+                RouteTool.bridgeWith(json.rawString() ?? "")
+            }
+        }
+        
+        bridge.registerHandler("getToken") { (data, responseCallback) in
+            if responseCallback != nil {
+                responseCallback!(Storage.token)
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ class EWebController: EBaseController {
         
         bridge = WebViewJavascriptBridge.init(forWebView: webView)
         bridge.setWebViewDelegate(self)
-        registerHandler(bridge)
+        registBridge(bridge)
         
         let (webURL, result) = checkUrl(url: model.url)
         if result {
@@ -43,18 +43,6 @@ extension EWebController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.navTitle = self.navTitle != "" ? self.navTitle : webView.title ?? ""
-    }
-}
-
-extension EWebController {
-    
-    func registerHandler(_ bridge: WebViewJavascriptBridge) {
-        bridge.registerHandler("getToken") { (data, responseCallback) in
-            
-            if responseCallback != nil {
-                responseCallback!("aaaaaa")
-            }
-        }
     }
 }
 
