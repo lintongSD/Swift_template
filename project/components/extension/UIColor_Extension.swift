@@ -12,7 +12,17 @@ import UIKit
 extension UIColor{
     class var themeColor: UIColor {
         get {
-            return UIColor.colorWithHexString(color: "007E3E")
+            if #available(iOS 13.0, *) {
+                return UIColor { (collection) -> UIColor in
+                    if collection.userInterfaceStyle == .dark {
+                        return UIColor.brown
+                    } else {
+                        return UIColor.colorWithHexString(color: "007E3E")
+                    }
+                }
+            } else {
+                return UIColor.colorWithHexString(color: "007E3E")
+            }
         }
     }
     // controller背景色

@@ -32,7 +32,7 @@ class NetworkTool {
             return
         }
         let manager = Alamofire.SessionManager.default
-        let headers = ["token":"xxxxxx"]
+        let headers = ["token":Storage.token]
         let request = try! URLRequest(url: uploadUrl, method: .post, headers: headers)
         
         manager.upload(multipartFormData: { (formData) in
