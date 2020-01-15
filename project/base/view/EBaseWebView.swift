@@ -2,7 +2,7 @@
 //  EBaseWebView.swift
 //  project
 //
-//  Created by ebiz on 2020/1/9.
+//  Created by lintong on 2020/1/9.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 

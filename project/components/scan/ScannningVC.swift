@@ -8,8 +8,8 @@
 
 import UIKit
 import AVFoundation
-typealias scaningResultBlock = (_ res: String)->Void
 
+typealias scaningResultBlock = (_ res: String)->Void
 
 class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
     

@@ -2,7 +2,7 @@
 //  EAPPLoadingModel.swift
 //  project
 //
-//  Created by ebiz on 2020/1/3.
+//  Created by lintong on 2020/1/3.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 

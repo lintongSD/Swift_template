@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class EBaseController: UIViewController {
 
-    var navTitle:String = "" {
+    var navTitle = "" {
         didSet {
             self.navTitleLable.text = self.navTitle
             self.navView.isHidden = false

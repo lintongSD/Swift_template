@@ -2,7 +2,7 @@
 //  EWebController.swift
 //  project
 //
-//  Created by ebiz on 2020/1/9.
+//  Created by lintong on 2020/1/9.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 
@@ -37,10 +37,6 @@ class EWebController: EBaseController {
 }
 
 extension EWebController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        
-    }
-    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.navTitle = self.navTitle != "" ? self.navTitle : webView.title ?? ""
     }

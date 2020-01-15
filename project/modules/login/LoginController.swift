@@ -2,7 +2,7 @@
 //  LoginController.swift
 //  project
 //
-//  Created by ebiz on 2020/1/7.
+//  Created by lintong on 2020/1/7.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 

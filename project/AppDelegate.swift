@@ -21,11 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = ETabBarController()
         window?.makeKeyAndVisible()
         
-        showGuideView()
+        checkAppConfig()
         
         return true
     }
     
+    // 添加后台模糊效果
     lazy var blurView: UIVisualEffectView = {
         let blurView = UIVisualEffectView(frame: mainWindow.bounds)
         blurView.effect = UIBlurEffect(style: .light)

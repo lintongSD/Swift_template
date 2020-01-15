@@ -39,7 +39,7 @@ class AppdelegateConfig {
 }
 
 extension AppDelegate {
-    func showGuideView() {
+    func checkAppConfig() {
         // 按需求显示引导图(每次更新版本时显示)
         if Storage.oldVersion != appVersion {
             Storage.oldVersion = appVersion

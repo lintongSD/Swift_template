@@ -2,7 +2,7 @@
 //  RouteModel.swift
 //  project
 //
-//  Created by ebiz on 2020/1/6.
+//  Created by lintong on 2020/1/6.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 
@@ -27,4 +27,5 @@ class RouteExtraModel: EBaseModel {
     var title = ""
     var login = ""
     var idAuth = ""
+    var number = ""
 }

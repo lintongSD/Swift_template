@@ -2,7 +2,7 @@
 //  Router.swift
 //  project
 //
-//  Created by ebiz on 2020/1/6.
+//  Created by lintong on 2020/1/6.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 
@@ -35,10 +35,6 @@ class RouteTool: NSObject {
             self.bridgeH5(routeModel)
         case "login":
             self.presentLoginVC()
-//        case "user_update":
-//            //重新获取用户信息
-//            UserHelper.instance.getUserInfo(false, success: {}) {}
-
         case "home":
             currentNav.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
@@ -59,7 +55,7 @@ class RouteTool: NSObject {
             
         case "tel":
             print("打电话")
-//            UIApplication.shared.openURL(URL.init(string: "tel://\(routeModel.extra.number)")!)
+            UIApplication.shared.openURL(URL.init(string: "tel://\(routeModel.extra.number)")!)
         case "scan":
             currentNav.pushViewController(ScannningVC(), animated: true)
             

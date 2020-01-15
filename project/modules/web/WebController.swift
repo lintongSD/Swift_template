@@ -2,7 +2,7 @@
 //  WebController.swift
 //  project
 //
-//  Created by ebiz on 2020/1/10.
+//  Created by lintong on 2020/1/10.
 //  Copyright © 2020 lintong. All rights reserved.
 //
 

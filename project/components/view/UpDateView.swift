@@ -17,8 +17,8 @@ class UpDateView: UIView {
             contentTextView.text = model.update.content
         }
     }
-    //是否是强制升级的标志位
-    var isforceFlag = Bool(false) {
+    // 是否是强制升级的标志位
+    var isforceFlag = false {
         didSet{
             afterBtn.isHidden = isforceFlag
             cancelBtn.isHidden = isforceFlag
@@ -171,7 +171,7 @@ class UpDateView: UIView {
         ELog("checkVersion版本检查：最低要求版本号\(mvStr),当前最新版本号\(cversionStr)")
     }
     
-    //是否强制更新的view
+    // 是否强制更新的view
     class func showUpdateView(_ model : AppLoadingModel,_ isForce:Bool) {
         let tipView = UpDateView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         tipView.model = model
@@ -193,7 +193,7 @@ class UpDateView: UIView {
 
 
 extension CAGradientLayer {
-    ///渐变色横向
+    // 渐变色横向
     class func gradientLayerCross(aColor : UIColor, bColor : UIColor) -> CAGradientLayer {
         let layer = CAGradientLayer()
         let gradientColors = [aColor.cgColor,
@@ -201,18 +201,18 @@ extension CAGradientLayer {
         
         let gradientLocations:[NSNumber] = [0.0, 1.0]
         
-        //创建CAGradientLayer对象并设置参数
+        // 创建CAGradientLayer对象并设置参数
         layer.colors = gradientColors
         layer.locations = gradientLocations
         layer.masksToBounds = true
         layer.cornerRadius = 3
-        //设置渲染的起始结束位置（横向渐变）
+        // 设置渲染的起始结束位置（横向渐变）
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 1, y: 0)
         return layer
     }
     
-    ///渐变色纵向
+    // 渐变色纵向
     class func gradientLayerPortrait(aColor : UIColor, bColor : UIColor) -> CAGradientLayer {
         let layer = CAGradientLayer()
         let gradientColors = [aColor.cgColor,
@@ -220,12 +220,12 @@ extension CAGradientLayer {
         
         let gradientLocations:[NSNumber] = [0.0, 1.0]
         
-        //创建CAGradientLayer对象并设置参数
+        // 创建CAGradientLayer对象并设置参数
         layer.colors = gradientColors
         layer.locations = gradientLocations
         layer.masksToBounds = true
         layer.cornerRadius = 3
-        //设置渲染的起始结束位置（横向渐变）
+        // 设置渲染的起始结束位置（横向渐变）
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 0, y: 1)
         return layer
