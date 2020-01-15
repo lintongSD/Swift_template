@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Api {
+class ApiManager {
     
     class func getApiByName( _ name: String) -> String {
         if name.starts(with: "http://") || name.starts(with: "https://") {

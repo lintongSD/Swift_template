@@ -26,7 +26,7 @@ class ADView: UIView {
         addSubview(adImageView)
         addSubview(jumpButton)
         
-        NetworkTool.request(url: Api.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
+        NetworkTool.request(url: ApiManager.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
             guard let model = json["content"].dictionaryObject else {
                 self.invalidateView()
                 return
