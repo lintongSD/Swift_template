@@ -14,7 +14,7 @@ class HomeController: EBaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ToastTool.toast("我是toast")
+        
         
         
     }

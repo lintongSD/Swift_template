@@ -31,6 +31,9 @@ let tabbarHeight: CGFloat = isiPhoneX ? 83 : 49
 let rootVC = mainWindow.rootViewController
 
 
+let uuid = UIDevice.current.identifierForVendor?.uuidString
+
+
 
 
 

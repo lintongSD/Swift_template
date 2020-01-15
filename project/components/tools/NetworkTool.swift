@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AdSupport
 import Alamofire
 import SwiftyJSON
 class NetworkTool {
@@ -29,7 +30,7 @@ class NetworkTool {
             param = NSMutableDictionary(dictionary: parameters!)
         }
         let dict = JSON(param).dictionaryObject
-        requestURLEncoding(url: url, method: method, parameters: dict, headers: headers, success: success, failure: failure)
+        requestWithHeader(url: url, method: method, parameters: dict, headers: headers, success: success, failure: failure)
     }
     
     /**
@@ -41,7 +42,14 @@ class NetworkTool {
             header = [:]
         }
         header?.updateValue(Storage.token, forKey: "token")
-        requestURLEncoding(url: url, method: method, parameters: parameters, headers: header, success: success, failure: failure)
+        header?.updateValue("application/json", forKey: "Content-Type")
+        
+        var device = getcommonDevive()
+        device = device.replacingOccurrences(of: "\n", with: "")
+        device = device.replacingOccurrences(of: " ", with: "")
+        
+        header?.updateValue(device, forKey: "device")
+        requestJSONEncoding(url: url, method: method, parameters: parameters, headers: header, success: success, failure: failure)
     }
     
     /**
@@ -136,6 +144,20 @@ class NetworkTool {
 //        self.description = desc
 //    }
 //}
+
+func getcommonDevive() -> String {
+    let dic : NSDictionary = [
+        "device": [
+            "id":uuid, //唯一标识    iOS取uuid
+            "source":"ios",
+            "idfa" : ASIdentifierManager.shared().advertisingIdentifier.uuidString, //广告标识
+//            "model" : "iPhone 6S",    //设备型号
+            "aversion" : appVersion, //app版本
+            "oversion" : UIDevice.current.systemVersion]
+    ]
+    let str = JSON(dic["device"] ?? "").rawString()!
+    return str
+}
 
 extension NetworkTool {
     /**
