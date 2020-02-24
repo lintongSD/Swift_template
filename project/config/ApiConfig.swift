@@ -27,7 +27,7 @@ class ApiConfig {
         }
     }
     // 获取url路径
-    class final func getUrl(_ name: String) -> String {
+    class func getUrl(_ name: String) -> String {
         guard let url = apiPathDict[name] else {
             return " "
         }
@@ -35,19 +35,19 @@ class ApiConfig {
     }
     
     // 根据当前环境环境获取baseUrl
-    class final var baseUrl: String {
+    class var baseUrl: String {
         get {
             return apiEnviromentDict["baseAPI"]!
         }
     }
     // 根据当前环境环境获取configUrl
-    class final var configUrl: String {
+    class var configUrl: String {
         get {
             return apiEnviromentDict["configAPI"]!
         }
     }
     // 根据当前环境环境获取restfulUrl
-    class final var restfulUrl: String {
+    class var restfulUrl: String {
         get {
             return apiEnviromentDict["restfulAPI"]!
         }

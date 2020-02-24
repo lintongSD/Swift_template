@@ -34,7 +34,7 @@ class RouteTool: NSObject {
         case "h5":
             self.bridgeH5(routeModel)
         case "login":
-            self.presentLoginVC()
+            self.pushLoginVC()
         case "home":
             currentNav.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
@@ -43,10 +43,10 @@ class RouteTool: NSObject {
             tabbar.selectedIndex = 1
         case "right":
             currentNav.popToRootViewController(animated: false)
-            tabbar.selectedIndex = 2
+            tabbar.selectedIndex = abs(tabbar.children.count/2) + 1
         case "mine":
             currentNav.popToRootViewController(animated: false)
-            tabbar.selectedIndex = 3
+            tabbar.selectedIndex = abs(tabbar.children.count/2) + 2
             
         case "message":
             ToastTool.toast("功能开发中，敬请期待")
@@ -75,12 +75,6 @@ class RouteTool: NSObject {
 
 extension RouteTool {
     
-    class func presentLoginVC() {
-        let u = LoginController(nibName: "LoginController", bundle: nil)
-        let v = ENavigationController.init(rootViewController: u)
-        tabbar.present(v, animated: true, completion: nil)
-    }
-    
     class var tabbar: ETabBarController {
         guard let tabbar = mainWindow.rootViewController else {
             ELog("找不到根控制器")
@@ -90,14 +84,14 @@ extension RouteTool {
     }
     
     class var currentNav: ENavigationController {
-        guard let tabVC = mainWindow.rootViewController else {
-            ELog("找不到根控制器")
-            return ENavigationController()
-        }
-        guard let nav = (tabVC as! ETabBarController).selectedViewController else {
+        guard let nav = tabbar.selectedViewController else {
             ELog("找不到根控制器")
             return ENavigationController()
         }
         return nav as! ENavigationController
+    }
+    class func pushLoginVC() {
+        let loginVC = LoginController(nibName: "LoginController", bundle: nil)
+        currentNav.pushViewController(loginVC, animated: true)
     }
 }
