@@ -17,11 +17,11 @@ extension UIColor{
                     if collection.userInterfaceStyle == .dark {
                         return UIColor.brown
                     } else {
-                        return UIColor.colorWithHexString(color: "FB866D")
+                        return UIColor.colorWithHexString(color: Storage.themeColor)
                     }
                 }
             } else {
-                return UIColor.colorWithHexString(color: "FB866D")
+                return UIColor.colorWithHexString(color: Storage.themeColor)
             }
         }
     }

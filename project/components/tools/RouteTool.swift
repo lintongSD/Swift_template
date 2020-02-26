@@ -30,24 +30,23 @@ class RouteTool: NSObject {
     
     private class func bridgeWithRouteModel(_ routeModel: RouteModel) {
         
+        let childrenCount = tabbar.children.count
+        
         switch routeModel.flag {
         case "h5":
             self.bridgeH5(routeModel)
         case "login":
             self.pushLoginVC()
         case "home":
-            currentNav.popToRootViewController(animated: false)
             tabbar.selectedIndex = 0
         case "left":
-            currentNav.popToRootViewController(animated: false)
             tabbar.selectedIndex = 1
+        case "mid":
+            tabbar.selectedIndex = Int(ceil(Double(childrenCount)/2.0))
         case "right":
-            currentNav.popToRootViewController(animated: false)
-            tabbar.selectedIndex = abs(tabbar.children.count/2) + 1
+            tabbar.selectedIndex = childrenCount-2
         case "mine":
-            currentNav.popToRootViewController(animated: false)
-            tabbar.selectedIndex = abs(tabbar.children.count/2) + 2
-            
+            tabbar.selectedIndex = childrenCount-1
         case "message":
             ToastTool.toast("功能开发中，敬请期待")
         case "share":

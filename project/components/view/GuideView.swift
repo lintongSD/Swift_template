@@ -54,7 +54,7 @@ class GuideView: UIView ,UIScrollViewDelegate {
         imageScrollview.contentSize = CGSize(width: screenWidth * 4, height: screenHeight)
         imageScrollview.delegate = self
         imageScrollview.isPagingEnabled = true
-        imageScrollview.backgroundColor = UIColor.white
+        imageScrollview.backgroundColor = .white
         imageScrollview.showsVerticalScrollIndicator = false
         imageScrollview.showsHorizontalScrollIndicator = false
         return imageScrollview

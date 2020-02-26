@@ -1,14 +1,14 @@
 //
-//  LeftController.swift
+//  ChatController.swift
 //  project
 //
-//  Created by lintong on 2019/8/20.
-//  Copyright © 2019 lintong. All rights reserved.
+//  Created by 林_同 on 2020/2/26.
+//  Copyright © 2020 lintong. All rights reserved.
 //
 
 import UIKit
 
-class LeftController: EBaseController {
+class ChatController: EBaseController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

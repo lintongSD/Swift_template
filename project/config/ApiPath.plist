@@ -4,5 +4,7 @@
 <dict>
 	<key>appLoadingAPI</key>
 	<string>appLoading</string>
+	<key>tabConfigAPI</key>
+	<string>tabConfig</string>
 </dict>
 </plist>

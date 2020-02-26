@@ -11,6 +11,7 @@ import Alamofire
 
 class HomeController: EBaseController {
 
+    var requestUrl = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         

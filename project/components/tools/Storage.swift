@@ -12,21 +12,23 @@ import WebKit
 
 class StorageKey: NSObject {
     static let token = "token"
-    // 登录标识
-    static let login = "is_login"
     // 判断是否需要提示更新版本
-    static let updateVersion = "updateVersion"
+    static let update_version = "updateVersion"
     // 发布新版本会有轮播图
     static let old_version = "old_version"
+    // 主题色
+    static let theme_color = "theme_color"
+    // tabbar颜色配置
+    static let tint_color = "tint_color"
+    static let barTint_color = "barTint_color"
 }
 
 class Storage {
     
     //清空存储的用户信息
     class func clearUserInfo() {
-        self.token = ""
-        Storage.isLogin = false
-//        UserHelper.instance.userInfoModel = UserInfoModel([:])
+        token = ""
+        UserStorage.userModel = UserModel([:])
         removeWKWebViewCookies()
     }
     
@@ -41,41 +43,8 @@ class Storage {
             return token == nil ? "" : token as! String
         }
     }
-    //=================是否登录=================
-    class var isLogin: Bool {
-        set {
-            UserDefaults.standard.setValue(newValue ,forKey: StorageKey.login)
-            UserDefaults.standard.synchronize()
-        }
-        get {
-            let version = UserDefaults.standard.object(forKey: StorageKey.login)
-            return version == nil ? false : version as! Bool
-        }
-    }
-    //=================需要更新版本=================
-    class var updateVersion: String {
-        get {
-            let version = UserDefaults.standard.object(forKey: StorageKey.updateVersion)
-            return version == nil ? "" : version as! String
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: StorageKey.updateVersion)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    //=================旧版本=================
-    class var oldVersion: String {
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: StorageKey.old_version)
-            UserDefaults.standard.synchronize()
-        }
-        get {
-            let version = UserDefaults.standard.object(forKey: StorageKey.old_version)
-            return version == nil ? "" : version as! String
-        }
-    }
     
-    class func removeWKWebViewCookies(){
+    class func removeWKWebViewCookies() {
         //iOS9.0以上使用的方法
         if #available(iOS 9.0, *) {
             let dataStore = WKWebsiteDataStore.default()
@@ -97,6 +66,66 @@ class Storage {
             for cookie in (HTTPCookieStorage.shared.cookies)!{
                 HTTPCookieStorage.shared.deleteCookie(cookie)
             }
+        }
+    }
+}
+// MARK: app相关存储
+extension Storage {
+    // 版本更新
+    class var updateVersion: String {
+        get {
+            let version = UserDefaults.standard.object(forKey: StorageKey.update_version)
+            return version == nil ? "" : version as! String
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: StorageKey.update_version)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    class var oldVersion: String {
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: StorageKey.old_version)
+            UserDefaults.standard.synchronize()
+        }
+        get {
+            let version = UserDefaults.standard.object(forKey: StorageKey.old_version)
+            return version == nil ? "" : version as! String
+        }
+    }
+    // app颜色相关
+    class var themeColor: String {
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: StorageKey.theme_color)
+            UserDefaults.standard.synchronize()
+        }
+        get {
+            let color = UserDefaults.standard.object(forKey: StorageKey.theme_color)
+            return color == nil ? "FB866D" : color as! String
+        }
+    }
+    
+    class var tabbarConfig: [String: Any] {
+        get {
+            guard let dict = UserDefaults.standard.object(forKey: "tabbarModel") else {
+                let dict: [String: Any] = ["tabbar":["home":["label":"首页",
+                                                             "flag":"home",
+                                                             "url":"https://baidu.com"],
+                                                     "mid":["label":"产品",
+                                                              "flag":"product"],
+                                                     "mine":["label":"我的",
+                                                             "flag":"mine"]],
+                                           "theme":["unselectedColor":"666666",
+                                                    "selectedColor":"6699ff",
+                                                    "navigation":Storage.themeColor],
+                                           "selectedKey":"home",
+                                           "DEV_url":"",
+                                           "PRD_url":"",]
+                return dict
+            }
+            return dict as! [String : Any]
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "tabbarModel")
         }
     }
 }

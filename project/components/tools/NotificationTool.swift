@@ -11,6 +11,8 @@ import Foundation
 enum NotificationKey: String {
     case loginSuccess = "loginSuccess"
     case logout = "logout"
+    
+    case tabReload = "tabReload"
 }
 
 class NotificationTool {

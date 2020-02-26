@@ -16,7 +16,18 @@ class AppdelegateConfig {
         startListeningNetwork()
         setWebviewUserAgent()
         checkAppConfig()
-        
+        tabbarConfig()
+    }
+    
+    // tabbar配置
+    class func tabbarConfig() {
+        NetworkTool.requestJSON(url: ApiManager.getBaseApiByName("tabConfigAPI"), method: .get, parameters: nil, success: { (json) in
+            if json["code"].stringValue == "0" && json["content"].dictionary != nil {
+                Storage.tabbarConfig = json["content"]["data"].dictionaryObject ?? [:]
+                NotificationTool.post(NotificationKey.tabReload)
+            }
+        }) { (error) in
+        }
     }
     
     // 检查app配置

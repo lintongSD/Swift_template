@@ -47,7 +47,7 @@ class ScanningView: UIView {
         
         let label = UILabel(frame: CGRect(x: 0, y: 10, width: screenWidth, height: 21))
         label.textAlignment = .center
-        label.textColor = UIColor.white
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 14)
         label.text = "请将扫描框对准二维码即可"
         self.addSubview(label)

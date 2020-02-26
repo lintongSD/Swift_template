@@ -60,7 +60,7 @@ class EBaseController: UIViewController {
     }
     
     func hiddenLeftBtn() {
-        let classArr = [HomeController.self, LeftController.self, RightController.self, MineController.self]
+        let classArr = [HomeController.self, ProductController.self, SpecialController.self, ChatController.self, MineController.self]
         if classArr.contains(where: { $0 == self.classForCoder }) {
             leftButton.isHidden = true
         }

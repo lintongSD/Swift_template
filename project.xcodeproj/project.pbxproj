@@ -17,10 +17,6 @@
 		709288E6230BE05F00B555B5 /* EBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709288E5230BE05F00B555B5 /* EBaseController.swift */; };
 		709288F2230BE1DA00B555B5 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709288F0230BE1DA00B555B5 /* HomeController.swift */; };
 		709288F3230BE1DA00B555B5 /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709288F1230BE1DA00B555B5 /* HomeController.xib */; };
-		709288F6230BE1EC00B555B5 /* LeftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709288F4230BE1EC00B555B5 /* LeftController.swift */; };
-		709288F7230BE1EC00B555B5 /* LeftController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709288F5230BE1EC00B555B5 /* LeftController.xib */; };
-		709288FA230BE20100B555B5 /* RightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709288F8230BE20100B555B5 /* RightController.swift */; };
-		709288FB230BE20100B555B5 /* RightController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709288F9230BE20100B555B5 /* RightController.xib */; };
 		709288FE230BE20F00B555B5 /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709288FC230BE20F00B555B5 /* MineController.swift */; };
 		709288FF230BE20F00B555B5 /* MineController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709288FD230BE20F00B555B5 /* MineController.xib */; };
 		70928903230BE45400B555B5 /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70928902230BE45400B555B5 /* UIColor_Extension.swift */; };
@@ -61,6 +57,14 @@
 		88FFA9A723C715DA00A0EDD4 /* EWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFA9A623C715DA00A0EDD4 /* EWebController.swift */; };
 		88FFA9AA23C7169900A0EDD4 /* EBaseWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FFA9A923C7169900A0EDD4 /* EBaseWebView.swift */; };
 		D60323F195FBC649E52F6441 /* Pods_project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F3887F116C9DFD1431CC3E /* Pods_project.framework */; };
+		EFB9AADC24067C02007F5E3F /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9AADB24067C02007F5E3F /* UserStorage.swift */; };
+		EFB9AADE24067DD9007F5E3F /* AppStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9AADD24067DD9007F5E3F /* AppStorage.swift */; };
+		EFB9AAE12406881E007F5E3F /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9AADF2406881E007F5E3F /* ProductController.swift */; };
+		EFB9AAE22406881E007F5E3F /* ProductController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AAE02406881E007F5E3F /* ProductController.xib */; };
+		EFB9AAE52406883B007F5E3F /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9AAE32406883B007F5E3F /* ChatController.swift */; };
+		EFB9AAE62406883B007F5E3F /* ChatController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AAE42406883B007F5E3F /* ChatController.xib */; };
+		EFB9AAEA240688F2007F5E3F /* SpecialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9AAE8240688F2007F5E3F /* SpecialController.swift */; };
+		EFB9AAEB240688F2007F5E3F /* SpecialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB9AAE9240688F2007F5E3F /* SpecialController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,10 +82,6 @@
 		709288E5230BE05F00B555B5 /* EBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBaseController.swift; sourceTree = "<group>"; };
 		709288F0230BE1DA00B555B5 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		709288F1230BE1DA00B555B5 /* HomeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
-		709288F4230BE1EC00B555B5 /* LeftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftController.swift; sourceTree = "<group>"; };
-		709288F5230BE1EC00B555B5 /* LeftController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftController.xib; sourceTree = "<group>"; };
-		709288F8230BE20100B555B5 /* RightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightController.swift; sourceTree = "<group>"; };
-		709288F9230BE20100B555B5 /* RightController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightController.xib; sourceTree = "<group>"; };
 		709288FC230BE20F00B555B5 /* MineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
 		709288FD230BE20F00B555B5 /* MineController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineController.xib; sourceTree = "<group>"; };
 		70928902230BE45400B555B5 /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
@@ -201,6 +201,14 @@
 		88FFA9A623C715DA00A0EDD4 /* EWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EWebController.swift; sourceTree = "<group>"; };
 		88FFA9A923C7169900A0EDD4 /* EBaseWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBaseWebView.swift; sourceTree = "<group>"; };
 		9E0403D4343E7734645368D7 /* Pods-project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project.debug.xcconfig"; path = "Target Support Files/Pods-project/Pods-project.debug.xcconfig"; sourceTree = "<group>"; };
+		EFB9AADB24067C02007F5E3F /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		EFB9AADD24067DD9007F5E3F /* AppStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorage.swift; sourceTree = "<group>"; };
+		EFB9AADF2406881E007F5E3F /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
+		EFB9AAE02406881E007F5E3F /* ProductController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductController.xib; sourceTree = "<group>"; };
+		EFB9AAE32406883B007F5E3F /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		EFB9AAE42406883B007F5E3F /* ChatController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatController.xib; sourceTree = "<group>"; };
+		EFB9AAE8240688F2007F5E3F /* SpecialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialController.swift; sourceTree = "<group>"; };
+		EFB9AAE9240688F2007F5E3F /* SpecialController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,10 +274,11 @@
 		709288CD230BDFEA00B555B5 /* project */ = {
 			isa = PBXGroup;
 			children = (
-				7026F430230D30B000D71805 /* config */,
-				70EB7F34230CEA0200B2B879 /* components */,
-				709288E7230BE10F00B555B5 /* modules */,
 				709288E0230BE00500B555B5 /* base */,
+				70EB7F34230CEA0200B2B879 /* components */,
+				EFB9AADA24067BC4007F5E3F /* storage */,
+				709288E7230BE10F00B555B5 /* modules */,
+				7026F430230D30B000D71805 /* config */,
 				709288CE230BDFEA00B555B5 /* AppDelegate.swift */,
 				70928906230BF63100B555B5 /* AppdelegateConfig.swift */,
 				70CFE51C230FBDF1004F17A0 /* main.m */,
@@ -294,6 +303,7 @@
 		709288E7230BE10F00B555B5 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				EFB9AAE7240688CE007F5E3F /* mid */,
 				88CE4AA423C87E2500DA7FE8 /* web */,
 				88F2754323C4859B007EA8E8 /* login */,
 				709288E8230BE11700B555B5 /* home */,
@@ -325,8 +335,8 @@
 		709288EA230BE12000B555B5 /* left */ = {
 			isa = PBXGroup;
 			children = (
-				709288F4230BE1EC00B555B5 /* LeftController.swift */,
-				709288F5230BE1EC00B555B5 /* LeftController.xib */,
+				EFB9AADF2406881E007F5E3F /* ProductController.swift */,
+				EFB9AAE02406881E007F5E3F /* ProductController.xib */,
 			);
 			path = left;
 			sourceTree = "<group>";
@@ -334,8 +344,8 @@
 		709288EB230BE12700B555B5 /* right */ = {
 			isa = PBXGroup;
 			children = (
-				709288F8230BE20100B555B5 /* RightController.swift */,
-				709288F9230BE20100B555B5 /* RightController.xib */,
+				EFB9AAE32406883B007F5E3F /* ChatController.swift */,
+				EFB9AAE42406883B007F5E3F /* ChatController.xib */,
 			);
 			path = right;
 			sourceTree = "<group>";
@@ -369,6 +379,7 @@
 				70928904230BE87C00B555B5 /* DeviceInfo.swift */,
 				70EB7F39230CF28100B2B879 /* AppInfo.swift */,
 				70928909230BF76600B555B5 /* Storage.swift */,
+				EFB9AADD24067DD9007F5E3F /* AppStorage.swift */,
 				88D3BFF123BDF70700D77CC4 /* NetworkTool.swift */,
 				88D3BFF223BDF70700D77CC4 /* NotificationTool.swift */,
 				88EB8C4123BF1CAD006511AC /* ToastTool.swift */,
@@ -576,6 +587,23 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		EFB9AADA24067BC4007F5E3F /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				EFB9AADB24067C02007F5E3F /* UserStorage.swift */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
+		EFB9AAE7240688CE007F5E3F /* mid */ = {
+			isa = PBXGroup;
+			children = (
+				EFB9AAE8240688F2007F5E3F /* SpecialController.swift */,
+				EFB9AAE9240688F2007F5E3F /* SpecialController.xib */,
+			);
+			path = mid;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -640,12 +668,13 @@
 				709288D9230BDFED00B555B5 /* LaunchScreen.storyboard in Resources */,
 				887EB5EF23BF478D008C3C97 /* ApiPath.plist in Resources */,
 				887EB5ED23BF4742008C3C97 /* PRD.plist in Resources */,
+				EFB9AAE62406883B007F5E3F /* ChatController.xib in Resources */,
 				709288F3230BE1DA00B555B5 /* HomeController.xib in Resources */,
 				709288FF230BE20F00B555B5 /* MineController.xib in Resources */,
-				709288F7230BE1EC00B555B5 /* LeftController.xib in Resources */,
 				887EB5F123BF508D008C3C97 /* DEV.plist in Resources */,
-				709288FB230BE20100B555B5 /* RightController.xib in Resources */,
+				EFB9AAE22406881E007F5E3F /* ProductController.xib in Resources */,
 				887EB5E623BF424E008C3C97 /* public_key.pem in Resources */,
+				EFB9AAEB240688F2007F5E3F /* SpecialController.xib in Resources */,
 				887EB5E923BF424E008C3C97 /* LICENSE in Resources */,
 				887EB5E423BF424E008C3C97 /* private_key.pem in Resources */,
 				709288D6230BDFED00B555B5 /* Assets.xcassets in Resources */,
@@ -702,20 +731,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				709288F6230BE1EC00B555B5 /* LeftController.swift in Sources */,
 				709288E6230BE05F00B555B5 /* EBaseController.swift in Sources */,
 				88FFA9AA23C7169900A0EDD4 /* EBaseWebView.swift in Sources */,
-				709288FA230BE20100B555B5 /* RightController.swift in Sources */,
 				88E5244423C3269F00BC5597 /* RouteModel.swift in Sources */,
 				88D4C25623BF0D2400CF2199 /* AppLoadingModel.swift in Sources */,
 				88E5244B23C32C6700BC5597 /* UIView_Extension.swift in Sources */,
 				7092890A230BF76600B555B5 /* Storage.swift in Sources */,
 				70928907230BF63100B555B5 /* AppdelegateConfig.swift in Sources */,
+				EFB9AADE24067DD9007F5E3F /* AppStorage.swift in Sources */,
 				88D3BFF323BDF70700D77CC4 /* NetworkTool.swift in Sources */,
 				709288E4230BE04800B555B5 /* ETabBarController.swift in Sources */,
 				709288FE230BE20F00B555B5 /* MineController.swift in Sources */,
 				88F2754823C48665007EA8E8 /* LoginController.swift in Sources */,
 				88E5244723C32B5700BC5597 /* ScannningVC.swift in Sources */,
+				EFB9AADC24067C02007F5E3F /* UserStorage.swift in Sources */,
 				70EB7F37230CEA2200B2B879 /* GuideView.swift in Sources */,
 				70928905230BE87C00B555B5 /* DeviceInfo.swift in Sources */,
 				88EB8C4223BF1CAD006511AC /* ToastTool.swift in Sources */,
@@ -735,8 +764,11 @@
 				709288F2230BE1DA00B555B5 /* HomeController.swift in Sources */,
 				88CE4AA623C87E5800DA7FE8 /* WebController.swift in Sources */,
 				70EB7F3C230D119700B2B879 /* ADView.swift in Sources */,
+				EFB9AAEA240688F2007F5E3F /* SpecialController.swift in Sources */,
 				70CFE51D230FBDF1004F17A0 /* main.m in Sources */,
+				EFB9AAE52406883B007F5E3F /* ChatController.swift in Sources */,
 				88D3BFF423BDF70700D77CC4 /* NotificationTool.swift in Sources */,
+				EFB9AAE12406881E007F5E3F /* ProductController.swift in Sources */,
 				88FFA9A723C715DA00A0EDD4 /* EWebController.swift in Sources */,
 				70EB7F3A230CF28100B2B879 /* AppInfo.swift in Sources */,
 				88D4C25023BF0C1700CF2199 /* UpDateView.swift in Sources */,
