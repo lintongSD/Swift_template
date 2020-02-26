@@ -14,7 +14,6 @@ class EBaseController: UIViewController {
     var navTitle = "" {
         didSet {
             self.navTitleLable.text = self.navTitle
-            self.navView.isHidden = false
         }
     }
     
