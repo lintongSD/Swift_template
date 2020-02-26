@@ -54,11 +54,11 @@ class AppdelegateConfig {
         let webView = WKWebView(frame: CGRect.zero)
         webView.evaluateJavaScript("navigator.userAgent") { (obj, error) in
             let oldAgent = obj as! String
-            let newAgent = oldAgent.appending(" userAgent")
-            UserDefaults.standard.register(defaults: ["UserAgent" : newAgent])
+            userAgent = oldAgent.appending(" GHAPP_iOS_V2_1.0.4")
+            UserDefaults.standard.register(defaults: ["UserAgent" : userAgent])
             UserDefaults.standard.synchronize()
             if #available(iOS 9.0, *) {
-                webView.customUserAgent = newAgent
+                webView.customUserAgent = userAgent
             }
         }
     }
@@ -83,3 +83,4 @@ class AppdelegateConfig {
         networkListener?.startListening()
     }
 }
+var userAgent = ""

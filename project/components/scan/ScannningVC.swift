@@ -19,6 +19,8 @@ class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
     
     var resBolck : scaningResultBlock!
     
+    var needBack = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navTitle = "扫描二维码"
@@ -33,8 +35,6 @@ class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
             let output = AVCaptureMetadataOutput()
             //捕捉异常
             do {
-                print(captureDevice?.isFocusPointOfInterestSupported ?? false,"=======isFocusPointOfInterestSupported")
-                print(captureDevice?.isFocusModeSupported(.autoFocus) ?? false,"=======autoFocus")
                 //创建输入流
                 input = try AVCaptureDeviceInput.init(device: captureDevice!)
                 //把输入流添加到会话
@@ -81,10 +81,19 @@ class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
             self.resBolck(str)
         }
         
-        if str.starts(with: "http") {
-            RouteTool.bridgeWith("{\"flag\":\"h5\",\"extra\":{\"url\":\"\(str)\"}}")
+        if needBack {
+            self.navigationController?.popViewController(animated: true)
         } else {
-            ToastTool.toast("扫描结果为：\(str)")
+            if str.starts(with: "http") {
+                if str.contains("my-friends") {
+                    RouteTool.bridgeWith("{\"flag\":\"friend_h5\",\"extra\":{\"url\":\"\(str)\"}}")
+                } else {
+                    RouteTool.bridgeWith("{\"flag\":\"h5\",\"extra\":{\"url\":\"\(str)\"}}")
+                }
+                
+            } else {
+                ToastTool.toast("扫描结果为：\(str)")
+            }
         }
     }
     

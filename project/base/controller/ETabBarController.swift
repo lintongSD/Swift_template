@@ -11,12 +11,14 @@ import SwiftyJSON
 
 class ETabBarController: UITabBarController {
     
-    var baseUrl = ""
+    private var baseUrl = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationTool.observer(self, #selector(addChildVC), NotificationKey.tabReload)
+        
+        self.tabBar.isTranslucent = false
         addChildVC()
     }
     
@@ -28,7 +30,7 @@ class ETabBarController: UITabBarController {
         // 添加控制
         for key in ["home", "left", "mid", "right", "mine"] {
             if let vc = getVC(dict: JSON(dict)["tabbar"][key].dictionaryValue) {
-                configChild(vc: vc, info: JSON(dict)["tabbar"][key])
+                configTabBarItem(vc: vc, info: JSON(dict)["tabbar"][key])
                 controllers.append(vc)
                 if key == "mid" && JSON(dict)["tabbar"][key]["label"].stringValue.isEmpty {
                     vc.tabBarItem.imageInsets = UIEdgeInsets(top: -10, left: 0, bottom: 10, right: 0)
@@ -55,9 +57,11 @@ class ETabBarController: UITabBarController {
     
     func getVC(dict: [String: JSON]) -> UIViewController? {
         
+        var dictInfo = JSON(dict).dictionaryObject ?? [:]
         var url = dict["url"]?.stringValue ?? ""
         if !url.hasPrefix("http") {
             url = baseUrl + url
+            dictInfo.updateValue(JSON(url), forKey: "url")
         }
         
         switch dict["flag"]?.stringValue {
@@ -69,12 +73,12 @@ class ETabBarController: UITabBarController {
         case "product":
             let vc = ProductController()
             let nav = ENavigationController(rootViewController: vc)
-            vc.model = RouteExtraModel(dict)
+            vc.model = RouteExtraModel(dictInfo)
             return nav
         case "service":
             let vc = ProductController()
             let nav = ENavigationController(rootViewController: vc)
-            vc.model = RouteExtraModel(dict)
+            vc.model = RouteExtraModel(dictInfo)
             return nav
         case "mine":
             let vc = MineController()
@@ -84,7 +88,7 @@ class ETabBarController: UITabBarController {
         case "chat":
             let vc = WebController()
             let nav = ENavigationController(rootViewController: vc)
-            vc.model = RouteExtraModel(dict)
+            vc.model = RouteExtraModel(dictInfo)
             return nav
         default:
             ELog("没有对应的flag" + (dict["flag"]?.stringValue ?? ""))
@@ -92,7 +96,7 @@ class ETabBarController: UITabBarController {
         return nil
     }
     
-    func configChild(vc: UIViewController, info: JSON) {
+    func configTabBarItem(vc: UIViewController, info: JSON) {
         
         let defaultImage = UIImage(named: "tab_" + "\(info["flag"].stringValue)")
         

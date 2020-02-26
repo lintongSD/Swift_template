@@ -12,7 +12,7 @@ class ProductController: WebController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.webView.lt_height = screenHeight - navigationHeight - tabbarHeight
         
     }
 }

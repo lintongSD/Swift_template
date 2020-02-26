@@ -39,6 +39,7 @@ class EWebController: EBaseController {
 extension EWebController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        webView.customUserAgent = userAgent
         webView.injectionScript()
     }
     

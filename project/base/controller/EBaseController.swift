@@ -110,7 +110,6 @@ extension EBaseController: UIGestureRecognizerDelegate {
 
 extension EBaseController {
     func registBridge(_ bridge: WebViewJavascriptBridge) {
-        
         bridge.registerHandler("bridge") { (data, responBlock) in
             if JSONSerialization.isValidJSONObject(data!) {
                 let json = JSON.init(data!)
@@ -118,9 +117,48 @@ extension EBaseController {
             }
         }
         
-        bridge.registerHandler("getToken") { (data, responseCallback) in
-            if responseCallback != nil {
-                responseCallback!(Storage.token)
+        //获取token
+        bridge.registerHandler("getToken") { (data, responBlock) in
+            let tokenDic = ["token":Storage.token]
+            let data = try! JSONSerialization.data(withJSONObject: tokenDic, options: [])
+            let JSONString = String(data:data, encoding: .utf8)
+            responBlock!(JSONString)
+        }
+        
+        //扫码
+        bridge.registerHandler("scanCallback") { (data, responBlock) in
+            let scan = ScannningVC()
+            scan.needBack = true
+            scan.getScanResult { (str) in
+                let result = str.addingPercentEncoding(withAllowedCharacters: NSCharacterSet(charactersIn:"").inverted)!
+                let resDic:[String : Any] = ["result":result]
+                let jsonStr = JSON(resDic).rawString()
+                responBlock!(jsonStr)
+            }
+            RouteTool.currentNav.pushViewController(scan, animated: true)
+        }
+        
+        bridge.registerHandler("callSystem") { (data, response) in
+            guard let data = data else { return }
+            var url: URL?
+            let number = JSON(data)["number"].stringValue
+            let system = JSON(data)["system"].stringValue
+            switch system{
+            case "tel":
+                url = URL(string: "tel://\(number)")
+            case "sms":
+                url = URL(string: "sms://\(number)")
+            default:
+                print("")
+            }
+            if url != nil {
+                if UIApplication.shared.canOpenURL(url!) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url!)
+                    }
+                }
             }
         }
     }
