@@ -37,6 +37,11 @@ class EWebController: EBaseController {
 }
 
 extension EWebController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        webView.injectionScript()
+    }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.navTitle = self.navTitle != "" ? self.navTitle : webView.title ?? ""
     }

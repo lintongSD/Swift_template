@@ -29,7 +29,7 @@ class EBaseController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.backgroundColor
+        self.view.backgroundColor = .backgroundColor
         
         setNavView()
         hiddenLeftBtn()
@@ -40,7 +40,7 @@ class EBaseController: UIViewController {
     
     func setNavView() {
         self.navView = UIView.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: navigationHeight))
-        self.navView.backgroundColor = UIColor.themeColor
+        self.navView.backgroundColor = .themeColor
         
         self.leftButton = UIButton.init(frame: CGRect(x: 0, y: navigationHeight - 44, width: 44, height: 44))
         self.leftButton.setImage(UIImage.init(named: "backButtonIcon"), for: .normal)
@@ -49,15 +49,15 @@ class EBaseController: UIViewController {
         
         
         self.navTitleLable = UILabel.init(frame: CGRect(x: 90, y: navigationHeight - 44, width: screenWidth - 180, height: 44))
-        self.navTitleLable.textColor = UIColor.white
+        self.navTitleLable.textColor = .white
         self.navTitleLable.textAlignment = .center
         
-        self.navTitleLable.font = UIFont(name: "PingFangSC-Medium", size: 18) ?? UIFont.systemFont(ofSize: 18)
+        self.navTitleLable.font = UIFont.systemFont(ofSize: 18)
         
         self.navView.addSubview(leftButton)
-        self.navView.addSubview(self.navTitleLable)
+        self.navView.addSubview(navTitleLable)
         
-        self.view.addSubview(self.navView)
+        self.view.addSubview(navView)
     }
     
     func hiddenLeftBtn() {
