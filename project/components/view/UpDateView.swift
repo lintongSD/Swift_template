@@ -193,41 +193,43 @@ class UpDateView: UIView {
 
 
 extension CAGradientLayer {
+    
+    enum GradientDirection : Int {
+        case horizontal
+        case vertical
+    }
     // 渐变色横向
     class func gradientLayerCross(aColor : UIColor, bColor : UIColor) -> CAGradientLayer {
         let layer = CAGradientLayer()
-        let gradientColors = [aColor.cgColor,
-                              bColor.cgColor]
-        
-        let gradientLocations:[NSNumber] = [0.0, 1.0]
-        
-        // 创建CAGradientLayer对象并设置参数
-        layer.colors = gradientColors
-        layer.locations = gradientLocations
         layer.masksToBounds = true
         layer.cornerRadius = 3
-        // 设置渲染的起始结束位置（横向渐变）
-        layer.startPoint = CGPoint(x: 0, y: 0)
-        layer.endPoint = CGPoint(x: 1, y: 0)
-        return layer
+        return layer.gradientLayerConfig(aColor: aColor, bColor: bColor, direction: .horizontal)
     }
     
     // 渐变色纵向
     class func gradientLayerPortrait(aColor : UIColor, bColor : UIColor) -> CAGradientLayer {
         let layer = CAGradientLayer()
+        layer.masksToBounds = true
+        layer.cornerRadius = 3
+        return layer.gradientLayerConfig(aColor: aColor, bColor: bColor)
+    }
+    
+    func gradientLayerConfig(aColor : UIColor, bColor : UIColor, direction: GradientDirection = .vertical) -> CAGradientLayer {
         let gradientColors = [aColor.cgColor,
                               bColor.cgColor]
-        
         let gradientLocations:[NSNumber] = [0.0, 1.0]
         
         // 创建CAGradientLayer对象并设置参数
-        layer.colors = gradientColors
-        layer.locations = gradientLocations
-        layer.masksToBounds = true
-        layer.cornerRadius = 3
-        // 设置渲染的起始结束位置（横向渐变）
-        layer.startPoint = CGPoint(x: 0, y: 0)
-        layer.endPoint = CGPoint(x: 0, y: 1)
-        return layer
+        self.colors = gradientColors
+        self.locations = gradientLocations
+        switch direction {
+        case .horizontal:
+            self.startPoint = CGPoint(x: 0, y: 0)
+            self.endPoint = CGPoint(x: 1, y: 0)
+        case .vertical:
+            self.startPoint = CGPoint(x: 0, y: 0)
+            self.endPoint = CGPoint(x: 0, y: 1)
+        }
+        return self
     }
 }
