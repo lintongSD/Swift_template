@@ -13,8 +13,8 @@ class UpDateView: UIView {
     
     var model = AppLoadingModel() {
         didSet{
-            versionLabel.text = model.update.vname
-            contentTextView.text = model.update.content
+            versionLabel.text = model.iupdate.vname
+            contentTextView.text = model.iupdate.content
         }
     }
     // 是否是强制升级的标志位
@@ -31,8 +31,8 @@ class UpDateView: UIView {
         view.center = self.center
         view.layer.masksToBounds = true
         view.layer.cornerRadius = 7.0
-        let topColr = UIColor.colorWithHexString(color: "FB866D")
-        let bottomColr = UIColor.themeColor
+        let topColr = UIColor.themeColor
+        let bottomColr = UIColor.orange
         let gradientLayer = CAGradientLayer.gradientLayerPortrait(aColor:  topColr, bColor: bottomColr)
         gradientLayer.frame = CGRect(x: 0, y: 0, width: upViewWidth, height: 408)
         view.layer.insertSublayer(gradientLayer, at: 0)
@@ -43,7 +43,7 @@ class UpDateView: UIView {
         let label = UILabel.init(frame: CGRect.init(x: 0, y: 84, width: upViewWidth, height: 35))
         label.numberOfLines = 0
         label.textColor = .white
-        label.textAlignment = NSTextAlignment.center
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -87,7 +87,7 @@ class UpDateView: UIView {
         let titleLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: upViewWidth, height: 44))
         titleLabel.text = "升级提示"
         titleLabel.textColor = .white
-        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.textAlignment = .center
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         mainView.addSubview(titleLabel)
         
@@ -103,7 +103,7 @@ class UpDateView: UIView {
         detailLabel.text = "当前不是最新版本，请更新"
         detailLabel.numberOfLines = 0
         detailLabel.textColor = .white
-        detailLabel.textAlignment = NSTextAlignment.center
+        detailLabel.textAlignment = .center
         detailLabel.font = UIFont.systemFont(ofSize: 14)
         mainView.addSubview(detailLabel)
         mainView.addSubview(versionLabel)
@@ -122,8 +122,8 @@ class UpDateView: UIView {
     }
     @objc func go2upDateClick() {
         if ApiConfig.environmentStr == "PRD" {
-            if UIApplication.shared.canOpenURL(URL(string:model.update.prdUrl)!) {
-                UIApplication.shared.openURL(URL(string: model.update.prdUrl)!)
+            if UIApplication.shared.canOpenURL(URL(string:model.iupdate.prdUrl)!) {
+                UIApplication.shared.openURL(URL(string: model.iupdate.prdUrl)!)
                 if !isforceFlag {
                     self.removeFromSuperview()
                 }
@@ -131,8 +131,8 @@ class UpDateView: UIView {
                 ToastTool.toast("暂无下载链接")
             }
         } else {
-            if UIApplication.shared.canOpenURL(URL(string:model.update.aurl)!) {
-                UIApplication.shared.openURL(URL(string: model.update.aurl)!)
+            if UIApplication.shared.canOpenURL(URL(string:model.iupdate.aurl)!) {
+                UIApplication.shared.openURL(URL(string: model.iupdate.aurl)!)
                 if !isforceFlag {
                     self.removeFromSuperview()
                 }
@@ -158,17 +158,17 @@ class UpDateView: UIView {
         //  当前版本号
         let currentVersion = Int(Md5.getCurrentVersion())!
         //  最低版本号
-        let mvStr = model.update.mversion == "" ? "0" : model.update.mversion
+        let mvStr = model.iupdate.mversion == "" ? "0" : model.iupdate.mversion
         let minVersion = Int(mvStr)!
         //  线上最高版本号
-        let cversionStr = model.update.cversion == "" ? "0" : model.update.cversion
+        let cversionStr = model.iupdate.cversion == "" ? "0" : model.iupdate.cversion
         let highVersion = Int(cversionStr)!
         if currentVersion < minVersion { // 当前版本小于最低版本 弹强制更新
             self.showUpdateView(model, true)
         } else if currentVersion < highVersion {  //当前版本小于线上最高版本 提示更新
             self.showUpdateView(model, false)
         }
-        ELog("checkVersion版本检查：最低要求版本号\(mvStr),当前最新版本号\(cversionStr)")
+        ELog("checkVersion版本检查：当前App版本号\(currentVersion),最低要求版本号\(mvStr),最新版本号\(cversionStr)")
     }
     
     // 是否强制更新的view

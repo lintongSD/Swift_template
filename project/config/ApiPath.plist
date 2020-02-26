@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>appLoadingAPI</key>
-	<string>app/elder-loading</string>
+	<string>appLoading</string>
 </dict>
 </plist>

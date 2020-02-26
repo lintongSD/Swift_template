@@ -17,11 +17,11 @@ extension UIColor{
                     if collection.userInterfaceStyle == .dark {
                         return UIColor.brown
                     } else {
-                        return UIColor.colorWithHexString(color: "007E3E")
+                        return UIColor.colorWithHexString(color: "FB866D")
                     }
                 }
             } else {
-                return UIColor.colorWithHexString(color: "007E3E")
+                return UIColor.colorWithHexString(color: "FB866D")
             }
         }
     }
@@ -55,17 +55,24 @@ extension UIColor{
         }
     }
     
-    class func colorWithHexString(color:String) -> UIColor{
+    class func colorWithHexString(color:String) -> UIColor {
+        return colorWithHexString(color: color, alpha: 1)
+    }
+    
+    class func colorWithHexString(color:String, alpha: CGFloat) -> UIColor {
         
         var cString = color.trimmingCharacters(in: .whitespaces)
         if cString.count < 6 {
             return UIColor.clear
         }
+        let endIndex = cString.index(cString.endIndex, offsetBy: 0)
         if cString.hasPrefix("0X") {
-            cString = String(cString.prefix(2))
+            let startIndex = cString.index(cString.startIndex, offsetBy: 2)
+            cString = String(cString[startIndex..<endIndex])
         }
         if cString.hasPrefix("#") {
-            cString = String(cString.prefix(1))
+            let startIndex = cString.index(cString.startIndex, offsetBy: 1)
+            cString = String(cString[startIndex..<endIndex])
         }
         if cString.count != 6 {
             return UIColor.clear
@@ -91,7 +98,7 @@ extension UIColor{
         Scanner.init(string: String(gString)).scanHexInt32(&g)
         Scanner.init(string: String(bString)).scanHexInt32(&b)
         
-        return UIColor.init(red: CGFloat.init(r)/255.0, green: CGFloat.init(g)/255.0, blue: CGFloat.init(b)/255.0, alpha: 1)
+        return UIColor.init(red: CGFloat.init(r)/255.0, green: CGFloat.init(g)/255.0, blue: CGFloat.init(b)/255.0, alpha: alpha)
         
     }
 }

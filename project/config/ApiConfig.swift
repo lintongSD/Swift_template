@@ -13,17 +13,17 @@ class ApiConfig {
     static let environmentStr = "DEV"
 
     // 接口路径
-    static let apiPathDict: Dictionary<String, String> = {
+    static let apiPathDict: [String: String] = {
         let url = Bundle.main.path(forResource: "ApiPath", ofType: "plist")
         let dict = NSDictionary(contentsOfFile: url ?? " ")
-        return dict as! Dictionary<String, String>
+        return dict as! [String: String]
     }()
     // PRD和UAT(仅本文件访问)
-    fileprivate class var apiEnviromentDict: Dictionary<String, String> {
+    fileprivate class var apiEnviromentDict: [String: String] {
         get {
             let url = Bundle.main.path(forResource: environmentStr, ofType: "plist")
             let dict = NSDictionary(contentsOfFile: url ?? " ")
-            return dict as! Dictionary<String, String>
+            return dict as! [String: String]
         }
     }
     // 获取url路径

@@ -26,7 +26,7 @@ class ADView: UIView {
         addSubview(adImageView)
         addSubview(jumpButton)
         
-        NetworkTool.request(url: ApiManager.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
+        NetworkTool.requestJSON(url: ApiManager.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
             guard let model = json["content"].dictionaryObject else {
                 self.invalidateView()
                 return
@@ -90,7 +90,7 @@ class ADView: UIView {
     }()
     // 广告图
     lazy var adImageView: UIImageView = {
-        let adImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-150))
+        let adImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-100))
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(adTarget))
         adImageView.isUserInteractionEnabled = true
         adImageView.addGestureRecognizer(tapGesture)

@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>baseAPI</key>
-	<string>http://rap2api.taobao.org/app/mock/239951/</string>
+	<string>http://rap2.taobao.org:38080/app/mock/239951/</string>
 </dict>
 </plist>
