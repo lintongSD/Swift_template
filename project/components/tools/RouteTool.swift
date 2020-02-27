@@ -11,8 +11,6 @@ import SwiftyJSON
 
 class RouteTool: NSObject {
     
-    internal override init() {}
-    
     //MARK : 通用route 跳转 支持string类型或者model的跳转
     class func bridgeWith<T>(_ anyRoute: T) {
         print("route跳转+++++++++++++")

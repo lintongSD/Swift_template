@@ -2,8 +2,8 @@
 //  Md5.m
 //  RSADemo
 //
-//  Created by Ebiz on 15/12/1.
-//  Copyright (c) 2015年 Ebiz. All rights reserved.
+//  Created by lintong on 15/12/1.
+//  Copyright (c) 2015年 lintong. All rights reserved.
 //
 
 #import "Md5.h"
@@ -84,14 +84,8 @@
     return resultStr;
 }
 
-+(NSString*)URLEncode:(NSString *)str
-{
-     NSString * encodingString = (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                              (CFStringRef)str,
-                                                              NULL,
-                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                              kCFStringEncodingUTF8));
-    return encodingString;
++(NSString*)URLEncode:(NSString *)str{
+    return [str stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 +(HBRSAHandler *)creatRSA{
@@ -145,7 +139,7 @@
 /**
  *获取字符串类型当前时间
  *参数为: 日期格式，例如：yyyy-MM-dd or yyyy-MM-dd HH:mm:ss
- *@parem 日期格式，例如：yyyy-MM-dd or yyyy-MM-dd HH:mm:ss
+ *@parem format 日期格式，例如：yyyy-MM-dd or yyyy-MM-dd HH:mm:ss
  *@return 当前时间的字符串类型
  */
 +(NSString *)getCurrentDateStringWithFormat:(NSString *)format

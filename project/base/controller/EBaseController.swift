@@ -67,7 +67,7 @@ class EBaseController: UIViewController {
     }
     
     
-    @objc func leftButtonSelect(){
+    @objc func leftButtonSelect() {
         if self.navigationController == nil {
             self.dismiss(animated: true, completion: nil)
         } else {

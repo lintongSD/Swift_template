@@ -2,8 +2,8 @@
 //  Md5.h
 //  RSADemo
 //
-//  Created by Ebiz on 15/12/1.
-//  Copyright (c) 2015年 Ebiz. All rights reserved.
+//  Created by lintong on 15/12/1.
+//  Copyright (c) 2015年 lintong. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
