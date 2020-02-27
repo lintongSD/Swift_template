@@ -161,5 +161,9 @@ extension EBaseController {
                 }
             }
         }
+        bridge.registerHandler("login") { (data, response) in
+            RouteTool.pushLoginVC()
+        }
+        
     }
 }
