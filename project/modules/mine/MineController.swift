@@ -8,13 +8,10 @@
 
 import UIKit
 
-class MineController: EBaseController {
-
-    var requestUrl = ""
+class MineController: EController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
 }

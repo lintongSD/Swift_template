@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class ETabBarController: UITabBarController {
     
@@ -16,122 +15,53 @@ class ETabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationTool.observer(self, #selector(addChildVC), NotificationKey.tabReload)
+        NotificationTool.observer(self, Selector(("addChildVC")), NotificationKey.tabReload)
         
-        self.tabBar.isTranslucent = false
         addChildVC()
+        
+        tabBar.tintColor = .white
+        tabBar.barTintColor = .white
+        tabBar.isTranslucent = false
+        
+        tabBar.backgroundImage = UIImage()
+        tabBar.shadowImage = UIImage()
+        tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+        tabBar.layer.shadowOffset = CGSize(width: 0, height: -3)
+        tabBar.layer.shadowOpacity = 0.1
     }
     
-    @objc func addChildVC() {
-        let dict = Storage.tabbarConfig
-        var controllers = [UIViewController]()
-        baseUrl = JSON(dict)["\(ApiConfig.environmentStr)" + "_url"].stringValue
+    func addChildVC() {
         
-        // 添加控制
-        for key in ["home", "left", "mid", "right", "mine"] {
-            if let vc = getVC(dict: JSON(dict)["tabbar"][key].dictionaryValue) {
-                configTabBarItem(vc: vc, info: JSON(dict)["tabbar"][key])
-                controllers.append(vc)
-                if key == "mid" && JSON(dict)["tabbar"][key]["label"].stringValue.isEmpty {
-                    vc.tabBarItem.imageInsets = UIEdgeInsets(top: -10, left: 0, bottom: 10, right: 0)
-                }
-            }
-        }
-        self.viewControllers = controllers
+//        let sb = UIStoryboard.init(name: "Mine", bundle: nil)
+//        let mineVC = sb.instantiateViewController(withIdentifier: "MineController")
         
-        switch JSON(dict)["selectedKey"] {
-        case "home":
-            self.selectedIndex = 0
-        case "left":
-            self.selectedIndex = 1
-        case "mid":
-            self.selectedIndex = Int(ceil(Double(controllers.count)/2.0))
-        case "right":
-            self.selectedIndex = controllers.count-2
-        case "mine":
-            self.selectedIndex = controllers.count-1
-        default:
-            self.selectedIndex = 0
+        let vcArr = [HomeController(), LeftController(), RightController(), MineController()]
+        let configArr = [["title":"首页",
+                          "imageName":"tab_home",
+                          "selectedImageName":"tab_home_selected"],
+                         ["title":"直播课",
+                          "imageName":"tab_chat",
+                          "selectedImageName":"tab_chat_selected"],
+                         ["title":"我的课",
+                          "imageName":"tab_product",
+                          "selectedImageName":"tab_product_selected"],
+                         ["title":"个人中心",
+                          "imageName":"tab_mine",
+                          "selectedImageName":"tab_mine_selected"]]
+        
+        var viewControllers: [UIViewController] = []
+        
+        for (i, item) in configArr.enumerated() {
+            
+            let vc = ENavigationController(rootViewController: vcArr[i])
+            
+            vc.tabBarItem = UITabBarItem(title: item["title"], image: UIImage(named: item["imageName"]!)!.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: item["selectedImageName"]!)!.withRenderingMode(.alwaysOriginal))
+            
+            vc.tabBarItem.setTitleTextAttributes([.foregroundColor : UIColor.detailColor,.font:UIFont.systemFont(ofSize: 10)], for: .normal)
+            vc.tabBarItem.setTitleTextAttributes([.foregroundColor : UIColor.themeColor,.font:UIFont.systemFont(ofSize: 10)], for: .selected)
+            viewControllers.append(vc)
         }
+        
+        self.viewControllers = viewControllers
     }
-    
-    func getVC(dict: [String: JSON]) -> UIViewController? {
-        
-        var dictInfo = JSON(dict).dictionaryObject ?? [:]
-        var url = dict["url"]?.stringValue ?? ""
-        if !url.hasPrefix("http") {
-            url = baseUrl + url
-            dictInfo.updateValue(JSON(url), forKey: "url")
-        }
-        
-        switch dict["flag"]?.stringValue {
-        case "home":
-            let vc = HomeController()
-            let nav = ENavigationController(rootViewController: vc)
-            vc.requestUrl = url
-            return nav
-        case "product":
-            let vc = ProductController()
-            let nav = ENavigationController(rootViewController: vc)
-            vc.model = RouteExtraModel(dictInfo)
-            return nav
-        case "service":
-            let vc = ProductController()
-            let nav = ENavigationController(rootViewController: vc)
-            vc.model = RouteExtraModel(dictInfo)
-            return nav
-        case "mine":
-            let vc = MineController()
-            let nav = ENavigationController(rootViewController: vc)
-            vc.requestUrl = url
-            return nav
-        case "chat":
-            let vc = WebController()
-            let nav = ENavigationController(rootViewController: vc)
-            vc.model = RouteExtraModel(dictInfo)
-            return nav
-        default:
-            ELog("没有对应的flag" + (dict["flag"]?.stringValue ?? ""))
-        }
-        return nil
-    }
-    
-    func configTabBarItem(vc: UIViewController, info: JSON) {
-        
-        let defaultImage = UIImage(named: "tab_" + "\(info["flag"].stringValue)")
-        
-        let defaultSelectedImage = UIImage(named: "tab_" + "\(info["flag"].stringValue)" + "_selected")
-        
-        let dict = Storage.tabbarConfig
-        vc.tabBarItem = UITabBarItem(title: info["label"].stringValue, image: defaultImage!.withRenderingMode(.alwaysOriginal), selectedImage: defaultSelectedImage!.withRenderingMode(.alwaysOriginal))
-        vc.tabBarItem.setTitleTextAttributes([.foregroundColor : UIColor.colorWithHexString(color: JSON(dict)["theme"]["unselectedColor"].stringValue),.font:UIFont.systemFont(ofSize: 10)], for: .normal)
-        vc.tabBarItem.setTitleTextAttributes([.foregroundColor : UIColor.colorWithHexString(color: JSON(dict)["theme"]["selectedColor"].stringValue),.font:UIFont.systemFont(ofSize: 10)], for: .selected)
-        
-        if let url = URL(string: info["unselected"].stringValue) {
-            SDWebImageManager.shared.loadImage(with: url, options: .highPriority, progress: nil) { (image, data, error, cacheType, isSucceed, url) in
-            }
-            let cacheKey = SDWebImageManager.shared.cacheKey(for: url)
-            let image = SDImageCache.shared.imageFromDiskCache(forKey: cacheKey)
-            
-            let selectedCacheKey = SDWebImageManager.shared.cacheKey(for: URL(string: info["selected"].stringValue)!)
-            let selectedImage = SDImageCache.shared.imageFromDiskCache(forKey: selectedCacheKey) ?? defaultSelectedImage
-            
-            vc.tabBarItem = UITabBarItem(title: info["label"].stringValue, image: image!.withRenderingMode(.alwaysOriginal), selectedImage: selectedImage!.withRenderingMode(.alwaysOriginal))
-        }
-        
-        if let url = URL(string: info["selected"].stringValue) {
-            SDWebImageManager.shared.loadImage(with: url, options: .highPriority, progress: nil) { (image, data, error, cacheType, isSucceed, url) in
-            }
-            let selectedCacheKey = SDWebImageManager.shared.cacheKey(for: url)
-            let selectedImage = SDImageCache.shared.imageFromDiskCache(forKey: selectedCacheKey)
-            
-            let cacheKey = SDWebImageManager.shared.cacheKey(for: URL(string: info["unselected"].stringValue)!)
-            let image = SDImageCache.shared.imageFromDiskCache(forKey: cacheKey) ?? defaultImage
-            
-            vc.tabBarItem = UITabBarItem(title: info["label"].stringValue, image: image!.withRenderingMode(.alwaysOriginal), selectedImage: selectedImage!.withRenderingMode(.alwaysOriginal))
-        }
-        
-    }
-    
-    
 }

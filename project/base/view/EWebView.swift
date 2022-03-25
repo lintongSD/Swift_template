@@ -1,5 +1,5 @@
 //
-//  EBaseWebView.swift
+//  EWebView.swift
 //  project
 //
 //  Created by lintong on 2020/1/9.
@@ -7,10 +7,6 @@
 //
 
 import WebKit
-
-class EBaseWebView: WKWebView {
-    
-}
 
 extension WKWebView {
     func injectionScript() {

@@ -9,7 +9,7 @@
 import UIKit
 import AdSupport
 import Alamofire
-import SwiftyJSON
+
 class NetworkTool {
     
     /**

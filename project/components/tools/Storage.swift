@@ -28,7 +28,7 @@ class Storage {
     //清空存储的用户信息
     class func clearUserInfo() {
         token = ""
-        UserStorage.userModel = UserModel([:])
+//        UserStorage.userModel = UserModel()
         removeWKWebViewCookies()
     }
     

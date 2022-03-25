@@ -8,22 +8,12 @@
 
 import UIKit
 
-class AppLoadingModel: EBaseModel {
-    var flash = AppLoadingDetailModel([:])
-    var iupdate = AppLoadingDetailModel([:])
-    
-    override func setValue(_ value: Any?, forKey key: String) {
-        if key == "flash"  && value is Dictionary<String, Any> {
-            self.flash = AppLoadingDetailModel(value as! Dictionary<String, Any>)
-        } else if key == "iupdate" && value is NSDictionary {
-            self.iupdate = AppLoadingDetailModel(value as! Dictionary<String, Any>)
-        } else {
-            super.setValue(value, forKey: key)
-        }
-    }
+struct AppLoadingModel: HandyJSON {
+    var flash = AppLoadingDetailModel()
+    var iupdate = AppLoadingDetailModel()
 }
 
-class AppLoadingDetailModel: EBaseModel {
+struct AppLoadingDetailModel: HandyJSON {
     
     var img = ""
     var ximg = ""

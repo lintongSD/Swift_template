@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 
 class UpDateView: UIView {
     
@@ -128,7 +127,7 @@ class UpDateView: UIView {
                     self.removeFromSuperview()
                 }
             } else {
-                ToastTool.toast("暂无下载链接")
+                HUDTool.error("暂无下载链接")
             }
         } else {
             if UIApplication.shared.canOpenURL(URL(string:model.iupdate.aurl)!) {
@@ -137,7 +136,7 @@ class UpDateView: UIView {
                     self.removeFromSuperview()
                 }
             } else {
-                ToastTool.toast("暂无下载链接")
+                HUDTool.error("暂无下载链接")
             }
         }
     }

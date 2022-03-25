@@ -19,7 +19,7 @@ class ADView: UIView {
     
     var hiddenjumpBtn = false
     
-    var model = AppLoadingModel([:])
+    var model = AppLoadingModel()
     
     func layoutUI() {
         addSubview(vc.view)
@@ -27,11 +27,10 @@ class ADView: UIView {
         addSubview(jumpButton)
         
         NetworkTool.requestJSON(url: ApiManager.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
-            guard let model = json["content"].dictionaryObject else {
+            guard let model = json["content"].dictionaryObject, let appLoadingModel = AppLoadingModel.deserialize(from: model) else {
                 self.invalidateView()
                 return
             }
-            let appLoadingModel = AppLoadingModel(model)
             self.model = appLoadingModel
             self.getAppLoadingInfoFinish()
             //版本检查
@@ -58,7 +57,7 @@ class ADView: UIView {
   
     
     @objc func adTarget() {
-        RouteTool.bridgeWith(model.flash.route)
+//        RouteTool.bridgeWith(model.flash.route)
         invalidateView()
     }
     

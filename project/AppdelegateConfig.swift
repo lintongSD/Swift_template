@@ -37,8 +37,8 @@ class AppdelegateConfig {
             Storage.oldVersion = appVersion
             mainWindow.addSubview(GuideView())
             NetworkTool.requestJSON(url: ApiManager.getBaseApiByName("appLoadingAPI"), method: .get, parameters: nil, success: { (json) in
-                if json["content"].dictionary != nil {
-                    let appLoadingModel = AppLoadingModel(json["content"]["data"].dictionaryObject ?? [:])
+                if let dict = json["content"]["data"].dictionaryObject {
+                    let appLoadingModel = AppLoadingModel.deserialize(from:dict) ?? AppLoadingModel()
                     //版本检查
                     UpDateView.checkVersion(appLoadingModel)
                 }

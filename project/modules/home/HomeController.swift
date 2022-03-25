@@ -8,15 +8,16 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
-class HomeController: EBaseController {
+class HomeController: EController {
 
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     var requestUrl = ""
+    
+    var isEnd = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         
     }
     
@@ -29,13 +30,25 @@ class HomeController: EBaseController {
         let url = "http://139.9.31.175:18025/#/product/homeProduct?workinapp=1"
         
         
-        let dict = ["flag":"h5",
-                    "extra":["url":url]] as [String : Any]
-        let model = RouteModel(dict)
-        
-        ELog(model.modelToDict())
-        RouteTool.bridgeWith(model)
+//        let dict = ["flag":"h5",
+//                    "extra":["url":url]] as [String : Any]
+//        let model = RouteModel(dict)
+//        ELog(model.modelToDict())
+//        RouteTool.bridgeWith(model)
         
     }
-
+    @IBAction func changeAction(_ sender: Any) {
+        
+//        view.layoutIfNeeded()
+        if heightConstraint.constant == 50.0 {
+            heightConstraint.constant = 190
+        }else {
+            heightConstraint.constant = 50
+        }
+        UIView.animate(withDuration: 2.0) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
 }

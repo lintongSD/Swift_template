@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginController: EBaseController {
+class LoginController: EController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,11 +8,9 @@
 
 import WebKit
 
-class EWebController: EBaseController {
+class EWebController: EController {
     
-    var model = RouteExtraModel([:])
-    
-    var webView = EBaseWebView()
+    var webView = WKWebView()
     
     /**
      * webView只负责展示, bridge负责交互, 在mvc模型中相当于controller的角色, 所以不应该放在view里
@@ -27,7 +25,11 @@ class EWebController: EBaseController {
         
         bridge = WebViewJavascriptBridge.init(forWebView: webView)
         bridge.setWebViewDelegate(self)
-        registBridge(bridge)
+        
+        guard let model = EWebModel.deserialize(from: extra) else {
+            HUDTool.error("模型解析错误")
+            return
+        }
         
         let (webURL, result) = checkUrl(url: model.url)
         if result {

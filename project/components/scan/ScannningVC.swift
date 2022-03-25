@@ -9,25 +9,21 @@
 import UIKit
 import AVFoundation
 
-typealias scaningResultBlock = (_ res: String)->Void
-
-class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
+class ScannningVC: EController ,AVCaptureMetadataOutputObjectsDelegate {
     
     //相机显示视图
     let cameraView = ScanningView(frame: CGRect(x: 0, y: navigationHeight, width: screenWidth, height: screenHeight - navigationHeight))
     var captureSession: AVCaptureSession!
     
-    var resBolck : scaningResultBlock!
-    
     var needBack = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navTitle = "扫描二维码"
-        self.view.addSubview(cameraView)
+        navTitle = "扫描二维码"
+        view.addSubview(cameraView)
         
         captureSession = AVCaptureSession()
-        self.view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.black
         DispatchQueue.main.async {
             let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
             var input :AVCaptureDeviceInput
@@ -68,7 +64,7 @@ class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
             let metaData : AVMetadataMachineReadableCodeObject = metadataObjects.first as! AVMetadataMachineReadableCodeObject
-            self.captureSession.stopRunning()
+            captureSession.stopRunning()
             DispatchQueue.main.async {
                 self.getResultStr(metaData.stringValue!) //扫出来的url请求接口.
             }
@@ -77,36 +73,24 @@ class ScannningVC: EBaseController ,AVCaptureMetadataOutputObjectsDelegate {
     
     func getResultStr(_ str: String) {
        ELog("二维码扫描结果为\(str)")
-        if self.resBolck != nil {
-            self.resBolck(str)
+        if callBack != nil {
+            let dict = ["str":str]
+            callBack!(dict)
         }
         
         if needBack {
-            self.navigationController?.popViewController(animated: true)
+            navigationController?.popViewController(animated: true)
         } else {
             if str.starts(with: "http") {
-                if str.contains("my-friends") {
-                    RouteTool.bridgeWith("{\"flag\":\"friend_h5\",\"extra\":{\"url\":\"\(str)\"}}")
-                } else {
-                    RouteTool.bridgeWith("{\"flag\":\"h5\",\"extra\":{\"url\":\"\(str)\"}}")
-                }
-                
+                Router.router(.h5, param: ["url":str])
             } else {
-                ToastTool.toast("扫描结果为：\(str)")
+                HUDTool.show("扫描结果为：\(str)")
             }
         }
     }
     
-    func getScanResult(_ res : @escaping scaningResultBlock) {
-        self.resBolck = res
-    }
-    
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.removeFromParent()
+        removeFromParent()
     }
-
-    
-    
 }
